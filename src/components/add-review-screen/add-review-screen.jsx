@@ -1,11 +1,16 @@
 import React from "react";
+import {PropTypes} from "prop-types";
+import {Link} from "react-router-dom";
 
-const AddReviewScreen = () => {
+const AddReviewScreen = (props) => {
+  const {promoFilm} = props;
+  const {bgImage, title, image} = promoFilm;
+
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={`img/${bgImage}`} alt={title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -22,7 +27,7 @@ const AddReviewScreen = () => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <Link to="/films/:id" href="movie-page.html" className="breadcrumbs__link">{title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -38,7 +43,7 @@ const AddReviewScreen = () => {
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={`img/${image}`} alt={title} width="218" height="327" />
         </div>
       </div>
 
@@ -75,6 +80,14 @@ const AddReviewScreen = () => {
 
     </section>
   );
+};
+
+AddReviewScreen.propTypes = {
+  promoFilm: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    bgImage: PropTypes.string.isRequired
+  })
 };
 
 export default AddReviewScreen;
