@@ -14,7 +14,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact 
+        <Route exact
           path="/"
           render={({history}) => (
             <MainScreen
@@ -27,17 +27,23 @@ const App = (props) => {
         <Route exact path="/login">
           <AuthScreen />
         </Route>
-        <Route exact path="/mylist">
-          <MyListScreen films={films} />
+        <Route exact path="/mylist"
+          render={({history}) => (
+            <MyListScreen
+              films={films}
+              onFilmCardClick={(id) => history.push(`/films/${id}`)}
+            />
+          )}
+        >
         </Route>
-        <Route exact 
+        <Route exact
           path="/films/:id"
           render={({history}) => (
-            <FilmScreen 
-            onFilmCardClick={(id) => history.push(`/${id}`)}
-            films={films} />
+            <FilmScreen
+              onFilmCardClick={(id) => history.push(`/films/${id}`)}
+              films={films} />
           )}
-        >  
+        >
         </Route>
         <Route exact path="/films/:id/review">
           <AddReviewScreen promoFilm={promoFilm} />

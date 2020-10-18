@@ -4,6 +4,6 @@ import App from "./components/app/app";
 import {films, promoFilm} from "./mocks/films";
 
 ReactDOM.render(
-  <App promoFilm={promoFilm} films={films} />,
+    <App promoFilm={promoFilm} films={films} />,
     document.querySelector(`#root`)
 );

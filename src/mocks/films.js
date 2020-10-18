@@ -44,6 +44,6 @@ const promoFilm = {
   year: 2020,
   image: `the-grand-budapest-hotel-poster.jpg`,
   bgImage: `bg-the-grand-budapest-hotel.jpg`
-}
+};
 
 export {films, promoFilm};

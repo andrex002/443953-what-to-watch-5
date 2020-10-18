@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import FilmCardsList from "../film-cards-list/film-cards-list";
+import UserBlock from "../user-block/user-block";
 
 const MainScreen = (props) => {
   const {promoFilm, films, onFilmCardClick} = props;
@@ -25,11 +26,7 @@ const MainScreen = (props) => {
             </a>
           </div>
 
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
+          <UserBlock />
         </header>
 
         <div className="movie-card__wrap">

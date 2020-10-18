@@ -5,11 +5,11 @@ const FilmCard = (props) => {
   const {title, image, id, onHover, onFilmCardClick} = props;
 
   return (
-    <article 
-      className="small-movie-card catalog__movies-card" 
+    <article
+      className="small-movie-card catalog__movies-card"
       data-id={id}
-      onMouseOver={onHover(id)}
-      onClick={onFilmCardClick(id)}
+      onMouseOver={() => onHover(id)}
+      onClick={() => onFilmCardClick(id)}
     >
       <div className="small-movie-card__image">
         <img src={`img/${image}`} alt={title} width="280" height="175" />
