@@ -9,25 +9,44 @@ import PlayerScreen from "../player-screen/player-screen";
 import AddReviewScreen from "../add-review-screen/add-review-screen";
 
 const App = (props) => {
-  const {film} = props;
+  const {films, promoFilm} = props;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          <MainScreen film={film} />
+        <Route exact
+          path="/"
+          render={({history}) => (
+            <MainScreen
+              films={films}
+              promoFilm={promoFilm}
+              onFilmCardClick={(id) => history.push(`/films/${id}`)} />
+          )}
+        >
         </Route>
         <Route exact path="/login">
           <AuthScreen />
         </Route>
-        <Route exact path="/mylist">
-          <MyListScreen />
+        <Route exact path="/mylist"
+          render={({history}) => (
+            <MyListScreen
+              films={films}
+              onFilmCardClick={(id) => history.push(`/films/${id}`)}
+            />
+          )}
+        >
         </Route>
-        <Route exact path="/films/:id">
-          <FilmScreen />
+        <Route exact
+          path="/films/:id"
+          render={({history}) => (
+            <FilmScreen
+              onFilmCardClick={(id) => history.push(`/films/${id}`)}
+              films={films} />
+          )}
+        >
         </Route>
         <Route exact path="/films/:id/review">
-          <AddReviewScreen />
+          <AddReviewScreen promoFilm={promoFilm} />
         </Route>
         <Route exact path="/player/:id">
           <PlayerScreen />
@@ -38,11 +57,8 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired
-  })
+  promoFilm: PropTypes.object.isRequired,
+  films: PropTypes.array.isRequired
 };
 
 export default App;
