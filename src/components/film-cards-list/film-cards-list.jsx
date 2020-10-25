@@ -7,15 +7,15 @@ class FilmCardsList extends PureComponent {
     super(props);
 
     this.state = {
-      activeCard: ``
+      activeFilmCard: null
     };
 
-    this._handleActiveCard = this._handleActiveCard.bind(this);
+    this.handleHoverFilmCard = this.handleHoverFilmCard.bind(this);
   }
 
-  _handleActiveCard(id) {
+  handleHoverFilmCard(filmId) {
     this.setState({
-      activeCard: id
+      activeFilmCard: filmId
     });
   }
 
@@ -31,8 +31,10 @@ class FilmCardsList extends PureComponent {
               key={film.id}
               title={film.title}
               image={film.image}
-              onHover={this._handleActiveCard}
+              handleHoverFilmCard={this.handleHoverFilmCard}
               onFilmCardClick={onFilmCardClick}
+              srcVideo={film.video}
+              isActive={film.id === this.state.activeFilmCard}
             />
           );
         })}
@@ -45,7 +47,8 @@ FilmCardsList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired
+    image: PropTypes.string.isRequired,
+    video: PropTypes.string.isRequired
   })),
   onFilmCardClick: PropTypes.func.isRequired
 };

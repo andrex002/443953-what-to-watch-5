@@ -7,13 +7,13 @@ class AddReviewForm extends PureComponent {
     super(props);
 
     this.state = {
-      rating: ``,
+      currentRating: ``,
       comment: ``
     };
   }
 
   render() {
-    const currentRating = this.state.rating;
+    const {currentRating} = this.state;
 
     return (
       <form
@@ -31,7 +31,7 @@ class AddReviewForm extends PureComponent {
                     checked={currentRating === starNumber}
                     onChange={(evt) => {
                       this.setState({
-                        rating: evt.target.value
+                        currentRating: evt.target.value
                       });
                     }}
                   />

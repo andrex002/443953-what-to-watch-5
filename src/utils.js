@@ -22,7 +22,7 @@ const getRating = (a, b) => {
   const upper = Math.floor(Math.max(a, b));
   const rating = lower + Math.random() * (upper - lower + 1);
 
-  return rating < 10 ? rating.toFixed(1) : rating;
+  return rating < 10 ? +rating.toFixed(1) : rating;
 };
 
 const formatFilmDuration = (duration) => {
