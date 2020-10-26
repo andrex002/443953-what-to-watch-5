@@ -1,21 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+import VideoPlayer from "../video-player/video-player";
 
 const FilmCard = (props) => {
-  const {title, image, id, onHover, onFilmCardClick} = props;
+  const {title, image, id, handleHoverFilmCard, onFilmCardClick, srcVideo, isActive} = props;
+
+  const moviePreview = isActive ?
+    <VideoPlayer srcVideo={srcVideo} poster={`img/${image}`} /> :
+    <div className="small-movie-card__image">
+      <img src={`img/${image}`} alt={title} width="280" height="175" />
+    </div>;
 
   return (
     <article
       className="small-movie-card catalog__movies-card"
       data-id={id}
-      onMouseOver={() => onHover(id)}
+      onMouseEnter={() => handleHoverFilmCard(id)}
+      onMouseLeave={() => handleHoverFilmCard(null)}
       onClick={() => onFilmCardClick(id)}
     >
-      <div className="small-movie-card__image">
-        <img src={`img/${image}`} alt={title} width="280" height="175" />
-      </div>
+      {moviePreview}
+
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+        <Link to={`/films/${id}`} className="small-movie-card__link">{title}</Link>
       </h3>
     </article>
   );
@@ -24,9 +32,11 @@ const FilmCard = (props) => {
 FilmCard.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  handleHoverFilmCard: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
-  onHover: PropTypes.func.isRequired,
-  onFilmCardClick: PropTypes.func.isRequired
+  srcVideo: PropTypes.string.isRequired,
+  onFilmCardClick: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired
 };
 
 export default FilmCard;
