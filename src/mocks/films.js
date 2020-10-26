@@ -1,13 +1,13 @@
 import {nanoid} from 'nanoid';
 import {FILMS_COUNT, TITLES, POSTERS, GENRES, DIRECTORS, ACTORS, DESCRIPTION_TEXTS, REVIEW_TEXTS} from '../const';
-import {getRandomInteger, getRandomElement, getRandomListElements, getRating} from '../utils';
+import {getRandomInteger, getRandomElement, getRandomListElements, getRating, getRandomDate, formatDate} from '../utils';
 
 const generateReviewInfo = () => {
   return {
     author: `AndreX`,
     text: getRandomElement(REVIEW_TEXTS),
     rating: getRating(0, 10),
-    date: getRandomInteger(new Date().setFullYear(new Date().getFullYear() - 10), Date.now())
+    date: formatDate(getRandomDate(new Date(getRandomInteger(2010, 2020), 0, 1), new Date()))
   };
 };
 
