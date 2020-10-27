@@ -22,7 +22,7 @@ const getRating = (a, b) => {
   const upper = Math.floor(Math.max(a, b));
   const rating = lower + Math.random() * (upper - lower + 1);
 
-  return rating < 10 ? +rating.toFixed(1) : rating;
+  return rating < 10 ? parseFloat(rating.toFixed(1), 10) : Math.floor(rating);
 };
 
 const formatFilmDuration = (duration) => {
@@ -31,7 +31,11 @@ const formatFilmDuration = (duration) => {
   return hours === 0 ? `${minutes}m` : `${hours}h ${minutes}m`;
 };
 
-const formateDate = (date) => {
+const getRandomDate = (start, end) => {
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+};
+
+const formatDate = (date) => {
   return date.toLocaleString(`en-US`, {month: `long`, day: `numeric`, year: `numeric`});
 };
 
@@ -51,4 +55,4 @@ const getRatingLevel = (score) => {
   return ratingLevel;
 };
 
-export {getRandomInteger, getRandomElement, getRandomListElements, getRating, formatFilmDuration, formateDate, getRatingLevel};
+export {getRandomInteger, getRandomElement, getRandomListElements, getRating, formatFilmDuration, getRandomDate, formatDate, getRatingLevel};
