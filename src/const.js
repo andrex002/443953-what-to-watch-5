@@ -1,4 +1,8 @@
-const FILMS_COUNT = 8;
+const filmsCount = {
+  ALL: 30,
+  PER_STEP: 8,
+  SIMILAR: 4
+};
 
 const TITLES = [
   `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -62,4 +66,4 @@ const REVIEW_TEXTS = [
 
 ];
 
-export {FILMS_COUNT, TITLES, POSTERS, GENRES, DIRECTORS, ACTORS, DESCRIPTION_TEXTS, REVIEW_TEXTS};
+export {filmsCount, TITLES, POSTERS, GENRES, DIRECTORS, ACTORS, DESCRIPTION_TEXTS, REVIEW_TEXTS};
