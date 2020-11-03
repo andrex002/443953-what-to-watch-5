@@ -1,5 +1,5 @@
 const filmsCount = {
-  ALL: 30,
+  ALL: 50,
   PER_STEP: 8,
   SIMILAR: 4
 };

@@ -59,6 +59,7 @@ const mapDispatchToProps = (dispatch) => ({
   onGenreClick(activeGenre) {
     dispatch(ActionCreator.changeFilter(activeGenre));
     dispatch(ActionCreator.getFilmByGenre(activeGenre));
+    dispatch(ActionCreator.clearShownFilms(activeGenre));
   }
 });
 
