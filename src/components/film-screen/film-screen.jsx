@@ -6,12 +6,13 @@ import LogoHeader from "../logo-header/logo-header";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 import Tabs from "../tabs/tabs";
+import {filmsCount} from "../../const";
 
 const FilmScreen = (props) => {
 
   const {films, onFilmCardClick} = props;
   const {title, genre, year, image, id} = films[0];
-  const similarFilms = films.filter((film) => film.genre === genre).slice(0, 4);
+  const similarFilms = films.filter((film) => film.genre === genre).slice(0, filmsCount.SIMILAR);
 
   return (
     <React.Fragment>

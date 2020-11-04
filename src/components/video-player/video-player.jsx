@@ -54,14 +54,14 @@ class VideoPlayer extends React.PureComponent {
   }
 
   render() {
-    const {srcVideo, poster} = this.props;
+    const {srcVideo, poster, width, height} = this.props;
     return (
       <video
         ref={this._videoRef}
         src={srcVideo}
         poster={poster}
-        width="280"
-        height="175"
+        width={width}
+        height={height}
         muted
       >
       </video>
@@ -69,9 +69,16 @@ class VideoPlayer extends React.PureComponent {
   }
 }
 
+VideoPlayer.defaultProps = {
+  width: 280,
+  height: 175
+};
+
 VideoPlayer.propTypes = {
   srcVideo: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired
 };
 
 export default VideoPlayer;
