@@ -17,7 +17,7 @@ const FilmCard = (props) => {
       className="small-movie-card catalog__movies-card"
       data-id={id}
       onMouseEnter={() => handleHoverFilmCard(id)}
-      onMouseLeave={() => handleHoverFilmCard(null)}
+      onMouseLeave={() => handleHoverFilmCard(``)}
       onClick={() => onFilmCardClick(id)}
     >
       {moviePreview}
@@ -39,4 +39,4 @@ FilmCard.propTypes = {
   isActive: PropTypes.bool.isRequired
 };
 
-export default FilmCard;
+export default React.memo(FilmCard);

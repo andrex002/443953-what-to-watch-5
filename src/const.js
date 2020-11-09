@@ -4,6 +4,12 @@ const filmsCount = {
   SIMILAR: 4
 };
 
+const FilmTabs = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`
+};
+
 const TITLES = [
   `Fantastic Beasts: The Crimes of Grindelwald`,
   `Bohemian Rhapsody`,
@@ -66,4 +72,6 @@ const REVIEW_TEXTS = [
 
 ];
 
-export {filmsCount, TITLES, POSTERS, GENRES, DIRECTORS, ACTORS, DESCRIPTION_TEXTS, REVIEW_TEXTS};
+const VIDEO_PLAY_TIMEOUT = 1000;
+
+export {FilmTabs, filmsCount, TITLES, POSTERS, GENRES, DIRECTORS, ACTORS, DESCRIPTION_TEXTS, REVIEW_TEXTS, VIDEO_PLAY_TIMEOUT};

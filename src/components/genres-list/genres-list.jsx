@@ -2,21 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
+import {getGenreName} from "../../utils";
 
 const GenresList = (props) => {
   const {films, activeGenre, onGenreClick} = props;
   const listAllGenres = [`All genres`, ...new Set(films.map((film) => film.genre))];
-
-  const getGenreName = (genre) => {
-    if (genre === `Comedy`) {
-      return `Comedies`;
-    } else if (genre === `Drama`) {
-      return `Dramas`;
-    } else if (genre === `Thriller`) {
-      return `Thrillers`;
-    }
-    return genre;
-  };
 
   const getGenreItemClass = (genre) => {
     return activeGenre === genre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`;

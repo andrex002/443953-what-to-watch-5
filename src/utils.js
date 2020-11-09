@@ -55,4 +55,15 @@ const getRatingLevel = (score) => {
   return ratingLevel;
 };
 
-export {getRandomInteger, getRandomElement, getRandomListElements, getRating, formatFilmDuration, getRandomDate, formatDate, getRatingLevel};
+const getGenreName = (genre) => {
+  if (genre === `Comedy`) {
+    return `Comedies`;
+  } else if (genre === `Drama`) {
+    return `Dramas`;
+  } else if (genre === `Thriller`) {
+    return `Thrillers`;
+  }
+  return genre;
+};
+
+export {getRandomInteger, getRandomElement, getRandomListElements, getRating, formatFilmDuration, getRandomDate, formatDate, getRatingLevel, getGenreName};

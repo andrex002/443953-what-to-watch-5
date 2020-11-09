@@ -38,15 +38,22 @@ const App = (props) => {
         </Route>
         <Route exact
           path="/films/:id"
-          render={({history}) => (
+          render={({history, match}) => (
             <FilmScreen
+              currentFilmId={match.params.id}
               onFilmCardClick={(id) => history.push(`/films/${id}`)}
-              films={films} />
+            />
           )}
         >
         </Route>
-        <Route exact path="/films/:id/review">
-          <AddReviewScreen promoFilm={promoFilm} />
+        <Route exact
+          path="/films/:id/review"
+          render={({match}) => (
+            <AddReviewScreen
+              currentFilmId={match.params.id}
+            />
+          )}
+        >
         </Route>
         <Route exact path="/player/:id">
           <PlayerScreen />
