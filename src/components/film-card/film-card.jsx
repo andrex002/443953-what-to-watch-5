@@ -2,12 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import VideoPlayer from "../video-player/video-player";
+import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
+
+const VideoPlayerWrapped = withVideoPlayer(VideoPlayer);
 
 const FilmCard = (props) => {
   const {title, image, id, handleHoverFilmCard, onFilmCardClick, srcVideo, isActive} = props;
 
   const moviePreview = isActive ?
-    <VideoPlayer srcVideo={srcVideo} poster={`img/${image}`} /> :
+    <VideoPlayerWrapped srcVideo={srcVideo} poster={`img/${image}`} /> :
     <div className="small-movie-card__image">
       <img src={`img/${image}`} alt={title} width="280" height="175" />
     </div>;
