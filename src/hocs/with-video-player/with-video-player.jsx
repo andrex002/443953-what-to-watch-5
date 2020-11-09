@@ -10,7 +10,7 @@ const withVideoPlayer = (Component) => {
         isLoading: true,
         isPlaying: false
       };
-      this._videoRef = this.props.forwardedRef;
+      this._videoRef = createRef();
     }
 
     _play() {
@@ -51,13 +51,10 @@ const withVideoPlayer = (Component) => {
     }
 
     render() {
-      const {forwardedRef, ...rest} = this.props;
-      return <Component ref={forwardedRef} {...rest} />;
+      return <Component forwardedRef={this._videoRef} {...this.props} />;
     }
-  };
-  return React.forwardRef((props, ref) => {
-    return <WithVideoPlayer {...props} forwardedRef={ref} />;
-  });
+  }
+  return WithVideoPlayer;
 };
 
 export default withVideoPlayer;

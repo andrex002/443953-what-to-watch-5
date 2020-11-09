@@ -1,8 +1,8 @@
-import React, {createRef, PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 const VideoPlayer = (props) => {
-    
+
   const {srcVideo, poster, width, height, forwardedRef} = props;
   return (
     <video
@@ -15,7 +15,7 @@ const VideoPlayer = (props) => {
     >
     </video>
   );
-}
+};
 
 VideoPlayer.defaultProps = {
   width: 280,
@@ -23,6 +23,7 @@ VideoPlayer.defaultProps = {
 };
 
 VideoPlayer.propTypes = {
+  forwardedRef: PropTypes.object.isRequired,
   srcVideo: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
