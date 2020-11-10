@@ -5,6 +5,7 @@ import LogoHeader from "../logo-header/logo-header";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
+import {connect} from "react-redux";
 
 const FilmCardsListWrapped = withActiveCard(FilmCardsList);
 
@@ -41,4 +42,9 @@ MyListScreen.propTypes = {
   onFilmCardClick: PropTypes.func.isRequired
 };
 
-export default MyListScreen;
+const mapStateToProps = (state) => ({
+  films: state.allFilms
+});
+
+export {MyListScreen};
+export default connect(mapStateToProps)(MyListScreen);

@@ -66,4 +66,13 @@ const getGenreName = (genre) => {
   return genre;
 };
 
-export {getRandomInteger, getRandomElement, getRandomListElements, getRating, formatFilmDuration, getRandomDate, formatDate, getRatingLevel, getGenreName};
+const addZero = (num) => num > 0 && num <= 9 ? `0` + num : num;
+
+const formatDurationFilmInSeconds = (durationInSeconds) => {
+  const hours = Math.floor(durationInSeconds / (60 * 60));
+  const minutes = Math.floor(durationInSeconds / 60) - (hours * 60);
+  const seconds = durationInSeconds % 60;
+  return `${hours}:${addZero(minutes)}:${addZero(seconds)}`;
+};
+
+export {getRandomInteger, getRandomElement, getRandomListElements, getRating, formatFilmDuration, getRandomDate, formatDate, getRatingLevel, getGenreName, formatDurationFilmInSeconds};

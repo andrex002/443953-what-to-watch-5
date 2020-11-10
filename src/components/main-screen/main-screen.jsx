@@ -103,7 +103,8 @@ MainScreen.propTypes = {
 
 const mapStateToProps = (state) => ({
   filteredFilms: state.filteredFilms,
-  numberFilmsShown: state.numberFilmsShown
+  numberFilmsShown: state.numberFilmsShown,
+  promoFilm: state.promoFilm
 });
 
 export {MainScreen};

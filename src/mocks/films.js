@@ -44,7 +44,8 @@ const promoFilm = {
   genre: `Comedy`,
   year: 2020,
   image: `the-grand-budapest-hotel-poster.jpg`,
-  bgImage: `bg-the-grand-budapest-hotel.jpg`
+  bgImage: `bg-the-grand-budapest-hotel.jpg`,
+  video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
 
 export {films, promoFilm};
