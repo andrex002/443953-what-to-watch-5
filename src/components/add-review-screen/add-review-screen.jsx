@@ -4,10 +4,16 @@ import {Link} from "react-router-dom";
 import LogoHeader from "../logo-header/logo-header";
 import UserBlock from "../user-block/user-block";
 import AddReviewForm from "../add-review-form/add-review-form";
+import {connect} from "react-redux";
+import withUserReview from "../../hocs/with-user-review/with-user-review";
+
+const AddReviewFormWrapped = withUserReview(AddReviewForm);
 
 const AddReviewScreen = (props) => {
-  const {promoFilm} = props;
-  const {bgImage, title, image} = promoFilm;
+  const {films, currentFilmId} = props;
+  const currentFilm = films.find((film) => film.id === currentFilmId);
+
+  const {bgImage, title, image} = currentFilm;
 
   return (
     <section className="movie-card movie-card--full">
@@ -44,7 +50,7 @@ const AddReviewScreen = (props) => {
 
       <div className="add-review">
 
-        <AddReviewForm />
+        <AddReviewFormWrapped />
 
       </div>
 
@@ -53,11 +59,17 @@ const AddReviewScreen = (props) => {
 };
 
 AddReviewScreen.propTypes = {
-  promoFilm: PropTypes.shape({
+  currentFilmId: PropTypes.string.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape({
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     bgImage: PropTypes.string.isRequired
-  })
+  }))
 };
 
-export default AddReviewScreen;
+const mapStateToProps = (state) => ({
+  films: state.allFilms
+});
+
+export {AddReviewScreen};
+export default connect(mapStateToProps)(AddReviewScreen);

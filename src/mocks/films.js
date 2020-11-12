@@ -31,7 +31,8 @@ const generateFilmInfo = () => {
       count: getRandomInteger(1, 500)
     },
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    reviews: getReviews(getRandomInteger(1, 10))
+    reviews: getReviews(getRandomInteger(1, 10)),
+    bgImage: `bg-the-grand-budapest-hotel.jpg`
   };
 };
 

@@ -1,17 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import FilmCardList from "../film-cards-list/film-cards-list";
+import FilmCardsList from "../film-cards-list/film-cards-list";
 import LogoHeader from "../logo-header/logo-header";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 import Tabs from "../tabs/tabs";
 import {filmsCount} from "../../const";
+import {connect} from "react-redux";
+import withActiveCard from "../../hocs/with-active-card/with-active-card";
+import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
+
+const FilmCardsListWrapped = withActiveCard(FilmCardsList);
+const TabsWrapped = withActiveTab(Tabs);
 
 const FilmScreen = (props) => {
+  const {films, onFilmCardClick, currentFilmId} = props;
 
-  const {films, onFilmCardClick} = props;
-  const {title, genre, year, image, id} = films[0];
+  const currentFilm = films.find((film) => film.id === currentFilmId);
+  const {title, genre, year, image, id} = currentFilm;
   const similarFilms = films.filter((film) => film.genre === genre).slice(0, filmsCount.SIMILAR);
 
   return (
@@ -65,7 +72,7 @@ const FilmScreen = (props) => {
               <img src={`img/${image}`} alt={title} width="218" height="327" />
             </div>
 
-            <Tabs film={films[0]} />
+            <TabsWrapped film={currentFilm} />
 
           </div>
         </div>
@@ -75,7 +82,7 @@ const FilmScreen = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmCardList onFilmCardClick={onFilmCardClick} films={similarFilms} />
+          <FilmCardsListWrapped onFilmCardClick={onFilmCardClick} films={similarFilms} />
 
         </section>
 
@@ -87,6 +94,7 @@ const FilmScreen = (props) => {
 };
 
 FilmScreen.propTypes = {
+  currentFilmId: PropTypes.string.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -97,4 +105,9 @@ FilmScreen.propTypes = {
   }))
 };
 
-export default FilmScreen;
+const mapStateToProps = (state) => ({
+  films: state.allFilms
+});
+
+export {FilmScreen};
+export default connect(mapStateToProps)(FilmScreen);

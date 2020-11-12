@@ -7,6 +7,9 @@ import PageFooter from "../page-footer/page-footer";
 import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import {connect} from "react-redux";
+import withActiveCard from "../../hocs/with-active-card/with-active-card";
+
+const FilmCardsListWrapped = withActiveCard(FilmCardsList);
 
 const MainScreen = (props) => {
   const {promoFilm, filteredFilms, onFilmCardClick, numberFilmsShown} = props;
@@ -73,7 +76,7 @@ const MainScreen = (props) => {
 
           <GenresList />
 
-          <FilmCardsList films={renderedFilms} onFilmCardClick={onFilmCardClick} />
+          <FilmCardsListWrapped films={renderedFilms} onFilmCardClick={onFilmCardClick} />
 
           {numberFilmsShown < filteredFilms.length && <ShowMoreButton />}
         </section>
