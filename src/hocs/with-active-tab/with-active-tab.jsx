@@ -7,7 +7,7 @@ const withActiveTab = (Component) => {
       super(props);
 
       this.state = {
-        filmTab: FilmTabs.OVERVIEW
+        activeTab: FilmTabs.OVERVIEW
       };
 
       this._handleActiveTab = this._handleActiveTab.bind(this);
