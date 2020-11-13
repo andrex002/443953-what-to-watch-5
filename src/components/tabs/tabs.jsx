@@ -8,7 +8,7 @@ import {FilmTabs} from "../../const";
 
 const Tabs = (props) => {
   const {film, activeTab, handleActiveTab} = props;
-  const {genre, year, rating, description, director, actors, duration, reviews} = film;
+  const {genre, year, rating, description, director, actors, duration, id} = film;
 
   const getFilmPageContent = () => {
     switch (activeTab) {
@@ -34,7 +34,7 @@ const Tabs = (props) => {
       case FilmTabs.REVIEWS:
         return (
           <FilmPageReviews
-            reviews={reviews}
+            filmId={id}
           />
         );
     }
@@ -80,7 +80,7 @@ Tabs.propTypes = {
     actors: PropTypes.array.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    reviews: PropTypes.array.isRequired,
+    id: PropTypes.number.isRequired,
     duration: PropTypes.number.isRequired,
   }),
   activeTab: PropTypes.string.isRequired,

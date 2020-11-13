@@ -38,7 +38,7 @@ const App = () => {
           path="/films/:id"
           render={({history, match}) => (
             <FilmScreen
-              currentFilmId={match.params.id}
+              currentFilmId={+match.params.id}
               onFilmCardClick={(id) => history.push(`/films/${id}`)}
             />
           )}
@@ -48,7 +48,7 @@ const App = () => {
           path="/films/:id/review"
           render={({match}) => (
             <AddReviewScreen
-              currentFilmId={match.params.id}
+              currentFilmId={+match.params.id}
             />
           )}
         >
@@ -56,7 +56,7 @@ const App = () => {
         <Route exact
           path="/player/:id"
           render={({match}) => (
-            <PlayerScreenWrapped currentFilmId={match.params.id} />
+            <PlayerScreenWrapped currentFilmId={+match.params.id} />
           )}
         >
         </Route>

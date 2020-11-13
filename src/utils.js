@@ -36,7 +36,8 @@ const getRandomDate = (start, end) => {
 };
 
 const formatDate = (date) => {
-  return date.toLocaleString(`en-US`, {month: `long`, day: `numeric`, year: `numeric`});
+  const dateToFormat = new Date(date);
+  return dateToFormat.toLocaleString(`en-US`, {month: `long`, day: `numeric`, year: `numeric`});
 };
 
 const getRatingLevel = (score) => {

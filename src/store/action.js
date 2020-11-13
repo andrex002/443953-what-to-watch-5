@@ -1,25 +1,50 @@
 const ActionType = {
+  LOAD_FILMS: `LOAD_FILMS`,
+  LOAD_PROMO: `LOAD_PROMO`,
+  LOAD_FAVORITES: `LOAD_FAVORITES`,
+  LOAD_COMMENTS: `LOAD_COMMENTS`,
   CHANGE__FILTER: `CHANGE__FILTER`,
-  GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
   SHOW_MORE_FILMS: `SHOW_MORE_FILMS`,
-  CLEAR_SHOWN_FILMS: `CLEAR_SHOWN_FILMS`
+  CLEAR_SHOWN_FILMS: `CLEAR_SHOWN_FILMS`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`
 };
 
-const ActionCreator = {
-  changeFilter: (genre) => ({
-    type: ActionType.CHANGE__FILTER,
-    payload: genre
-  }),
-  getFilmByGenre: (genre) => ({
-    type: ActionType.GET_FILMS_BY_GENRE,
-    payload: genre
-  }),
-  showMoreFilms: () => ({
-    type: ActionType.SHOW_MORE_FILMS
-  }),
-  clearShownFilms: () => ({
-    type: ActionType.CLEAR_SHOWN_FILMS
-  })
-};
+const loadFilms = (films) => ({
+  type: ActionType.LOAD_FILMS,
+  payload: films
+});
 
-export {ActionType, ActionCreator};
+const loadPromo = (film) => ({
+  type: ActionType.LOAD_PROMO,
+  payload: film
+});
+
+const loadFavorites = (films) => ({
+  type: ActionType.LOAD_FAVORITES,
+  payload: films
+});
+
+const loadComments = (comments) => ({
+  type: ActionType.LOAD_COMMENTS,
+  payload: comments
+});
+
+const changeFilter = (genre) => ({
+  type: ActionType.CHANGE__FILTER,
+  payload: genre
+});
+
+const showMoreFilms = () => ({
+  type: ActionType.SHOW_MORE_FILMS
+});
+
+const clearShownFilms = () => ({
+  type: ActionType.CLEAR_SHOWN_FILMS
+});
+
+const requireAuthorization = (status) => ({
+  type: ActionType.REQUIRED_AUTHORIZATION,
+  payload: status
+});
+
+export {ActionType, loadFilms, loadPromo, loadFavorites, loadComments, changeFilter, showMoreFilms, clearShownFilms, requireAuthorization};
