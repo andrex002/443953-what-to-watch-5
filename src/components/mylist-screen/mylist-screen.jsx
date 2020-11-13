@@ -42,8 +42,8 @@ MyListScreen.propTypes = {
   onFilmCardClick: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  films: state.allFilms
+const mapStateToProps = ({DATA}) => ({
+  films: DATA.allFilms
 });
 
 export {MyListScreen};

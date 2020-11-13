@@ -25,7 +25,7 @@ const withVideoPlayer = (Component) => {
 
     componentDidMount() {
       const video = this._videoRef.current;
-      video.oncanplaythrough = () => this.setState({
+      video.oncanplay = () => this.setState({
         isLoading: false
       });
 
@@ -45,7 +45,7 @@ const withVideoPlayer = (Component) => {
     componentWillUnmount() {
       const video = this._videoRef.current;
 
-      video.oncanplaythrough = null;
+      video.oncanplay = null;
 
       clearTimeout(this._playTimeOut);
     }

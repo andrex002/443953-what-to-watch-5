@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {showMoreFilms} from "../../store/action";
 
 const ShowMoreButton = (props) => {
   const {onShowMoreBtnClick} = props;
@@ -23,7 +23,7 @@ ShowMoreButton.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onShowMoreBtnClick() {
-    dispatch(ActionCreator.showMoreFilms());
+    dispatch(showMoreFilms());
   }
 });
 

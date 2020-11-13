@@ -28,12 +28,12 @@ const FilmCardsList = (props) => {
 
 FilmCardsList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     video: PropTypes.string.isRequired
   })),
-  activeFilmCard: PropTypes.string.isRequired,
+  activeFilmCard: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   handleHoverFilmCard: PropTypes.func.isRequired
 };
