@@ -67,8 +67,8 @@ AddReviewScreen.propTypes = {
   }))
 };
 
-const mapStateToProps = (state) => ({
-  films: state.allFilms
+const mapStateToProps = ({DATA}) => ({
+  films: DATA.allFilms
 });
 
 export {AddReviewScreen};

@@ -26,7 +26,7 @@ const FilmScreen = (props) => {
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="/img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={image} alt={title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -69,7 +69,7 @@ const FilmScreen = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={`img/${image}`} alt={title} width="218" height="327" />
+              <img src={image} alt={title} width="218" height="327" />
             </div>
 
             <TabsWrapped film={currentFilm} />
@@ -94,19 +94,19 @@ const FilmScreen = (props) => {
 };
 
 FilmScreen.propTypes = {
-  currentFilmId: PropTypes.string.isRequired,
+  currentFilmId: PropTypes.number.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired
   }))
 };
 
-const mapStateToProps = (state) => ({
-  films: state.allFilms
+const mapStateToProps = ({DATA}) => ({
+  films: DATA.allFilms
 });
 
 export {FilmScreen};

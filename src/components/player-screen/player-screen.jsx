@@ -6,7 +6,6 @@ import {connect} from "react-redux";
 
 const PlayerScreen = (props) => {
   const {forwardedRef, duration, progress, onPlayBtnClick, onFullscreenClick, films, promoFilm, currentFilmId, isPlaying} = props;
-
   const getCurrentFilm = () => {
     if (currentFilmId === promoFilm.id) {
       return promoFilm;
@@ -22,7 +21,7 @@ const PlayerScreen = (props) => {
 
   return (
     <div className="player">
-      <video ref={forwardedRef} src={currentFilm.video} className="player__video" poster={`img/${currentFilm.image}`}></video>
+      <video ref={forwardedRef} src={currentFilm.video} className="player__video" poster={currentFilm.image}></video>
 
       <button type="button" className="player__exit" onClick={() => history.goBack()}>Exit</button>
 
@@ -75,13 +74,13 @@ PlayerScreen.propTypes = {
   onFullscreenClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
   promoFilm: PropTypes.object.isRequired,
-  currentFilmId: PropTypes.string.isRequired,
+  currentFilmId: PropTypes.number.isRequired,
   isPlaying: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  films: state.allFilms,
-  promoFilm: state.promoFilm
+const mapStateToProps = ({DATA}) => ({
+  films: DATA.allFilms,
+  promoFilm: DATA.promoFilm
 });
 
 export {PlayerScreen};

@@ -10,9 +10,9 @@ const FilmCard = (props) => {
   const {title, image, id, handleHoverFilmCard, onFilmCardClick, srcVideo, isActive} = props;
 
   const moviePreview = isActive ?
-    <VideoPlayerWrapped srcVideo={srcVideo} poster={`img/${image}`} /> :
+    <VideoPlayerWrapped srcVideo={srcVideo} poster={image} /> :
     <div className="small-movie-card__image">
-      <img src={`img/${image}`} alt={title} width="280" height="175" />
+      <img src={image} alt={title} width="280" height="175" />
     </div>;
 
   return (
@@ -36,7 +36,7 @@ FilmCard.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   handleHoverFilmCard: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   srcVideo: PropTypes.string.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired

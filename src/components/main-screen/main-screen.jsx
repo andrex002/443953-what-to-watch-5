@@ -8,11 +8,13 @@ import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import {connect} from "react-redux";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
+import {getFilmsByGenre} from "../../store/selectors/selectors";
 
 const FilmCardsListWrapped = withActiveCard(FilmCardsList);
 
 const MainScreen = (props) => {
   const {promoFilm, filteredFilms, onFilmCardClick, numberFilmsShown} = props;
+
   const {title, genre, year, image, bgImage, id} = promoFilm;
 
   const renderedFilms = filteredFilms.slice(0, numberFilmsShown);
@@ -21,7 +23,7 @@ const MainScreen = (props) => {
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={`img/${bgImage}`} alt={title} />
+          <img src={bgImage} alt={title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -41,7 +43,7 @@ const MainScreen = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={`img/${image}`} alt={title} width="218" height="327" />
+              <img src={image} alt={title} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -94,17 +96,17 @@ MainScreen.propTypes = {
     year: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
     bgImage: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired
   }),
   filteredFilms: PropTypes.array.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   numberFilmsShown: PropTypes.number.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  filteredFilms: state.filteredFilms,
-  numberFilmsShown: state.numberFilmsShown,
-  promoFilm: state.promoFilm
+const mapStateToProps = ({DATA, FILTER}) => ({
+  filteredFilms: getFilmsByGenre({DATA, FILTER}),
+  numberFilmsShown: DATA.numberFilmsShown,
+  promoFilm: DATA.promoFilm
 });
 
 export {MainScreen};
