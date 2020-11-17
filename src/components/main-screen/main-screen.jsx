@@ -14,7 +14,7 @@ const FilmCardsListWrapped = withActiveCard(FilmCardsList);
 
 const MainScreen = (props) => {
   const {promoFilm, filteredFilms, onFilmCardClick, numberFilmsShown} = props;
-
+  console.log(promoFilm)
   const {title, genre, year, image, bgImage, id} = promoFilm;
 
   const renderedFilms = filteredFilms.slice(0, numberFilmsShown);

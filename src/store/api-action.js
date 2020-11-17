@@ -1,5 +1,6 @@
-import {loadFilms, loadPromo, loadFavorites, loadComments} from "./action";
+import {loadFilms, loadPromo, loadFavorites, loadComments, requireAuthorization, redirectToRoute, saveAuthorizationInfo} from "./action";
 import {adaptFilmToClient, adaptCommentToClient} from "../services/adapters";
+import {AuthorizationStatus} from "../const";
 
 const fetchFilmsList = () => (dispatch, _getState, api) => (
   api.get(`/films`)
@@ -10,7 +11,6 @@ const fetchPromoFilm = () => (dispatch, _getState, api) => (
   api.get(`/films/promo`)
     .then(({data}) => {
       dispatch(loadPromo(adaptFilmToClient(data)));
-
     })
     .catch((error) => {
       throw error;
@@ -27,4 +27,19 @@ const fetchComments = (id) => (dispatch, _getState, api) => (
     .then(({data}) => dispatch(loadComments(data.map(adaptCommentToClient))))
 );
 
-export {fetchFilmsList, fetchPromoFilm, fetchFavoriteFilms, fetchComments};
+const checkAuth = () => (dispatch, _getState, api) => (
+  api.get(`/login`)
+    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    // .catch((err) => {
+    //   throw err;
+    // })
+);
+
+const login = ({email, password}) => (dispatch, _getState, api) => (
+  api.post(`/login`, {email, password})
+    .then((response) => dispatch(saveAuthorizationInfo(response.data)))
+    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .then(() => dispatch(redirectToRoute(`/`)))
+);
+
+export {fetchFilmsList, fetchPromoFilm, fetchFavoriteFilms, fetchComments, checkAuth, login};

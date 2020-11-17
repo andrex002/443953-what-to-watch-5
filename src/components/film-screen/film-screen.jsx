@@ -6,7 +6,7 @@ import LogoHeader from "../logo-header/logo-header";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 import Tabs from "../tabs/tabs";
-import {filmsCount} from "../../const";
+import {filmsCount, AuthorizationStatus} from "../../const";
 import {connect} from "react-redux";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
@@ -15,15 +15,15 @@ const FilmCardsListWrapped = withActiveCard(FilmCardsList);
 const TabsWrapped = withActiveTab(Tabs);
 
 const FilmScreen = (props) => {
-  const {films, onFilmCardClick, currentFilmId} = props;
+  const {films, onFilmCardClick, currentFilmId, authorizationStatus} = props;
 
   const currentFilm = films.find((film) => film.id === currentFilmId);
-  const {title, genre, year, image, id} = currentFilm;
+  const {title, genre, year, image, id, bgImage, bgColor} = currentFilm;
   const similarFilms = films.filter((film) => film.genre === genre).slice(0, filmsCount.SIMILAR);
 
   return (
     <React.Fragment>
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={{backgroundColor: bgColor}}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
             <img src={image} alt={title} />
@@ -60,7 +60,10 @@ const FilmScreen = (props) => {
                   </svg>
                   <span>My list</span>
                 </Link>
-                <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
+                {
+                  authorizationStatus === AuthorizationStatus.AUTH ?
+                  <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link> : ``
+                }
               </div>
             </div>
           </div>
@@ -102,11 +105,13 @@ FilmScreen.propTypes = {
     year: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired
-  }))
+  })),
+  authorizationStatus: PropTypes.string.isRequired
 };
 
-const mapStateToProps = ({DATA}) => ({
-  films: DATA.allFilms
+const mapStateToProps = ({DATA, USER}) => ({
+  films: DATA.allFilms,
+  authorizationStatus: USER.authorizationStatus
 });
 
 export {FilmScreen};

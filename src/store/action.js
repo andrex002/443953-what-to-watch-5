@@ -6,7 +6,9 @@ const ActionType = {
   CHANGE__FILTER: `CHANGE__FILTER`,
   SHOW_MORE_FILMS: `SHOW_MORE_FILMS`,
   CLEAR_SHOWN_FILMS: `CLEAR_SHOWN_FILMS`,
-  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+  SAVE_AUTHORIZATION_INFO: `SAVE_AUTHORIZATION_INFO`
 };
 
 const loadFilms = (films) => ({
@@ -47,4 +49,14 @@ const requireAuthorization = (status) => ({
   payload: status
 });
 
-export {ActionType, loadFilms, loadPromo, loadFavorites, loadComments, changeFilter, showMoreFilms, clearShownFilms, requireAuthorization};
+const redirectToRoute = (url) => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: url
+});
+
+const saveAuthorizationInfo = (data) => ({
+  type: ActionType.SAVE_AUTHORIZATION_INFO,
+  payload: data
+});
+
+export {ActionType, loadFilms, loadPromo, loadFavorites, loadComments, changeFilter, showMoreFilms, clearShownFilms, requireAuthorization, redirectToRoute, saveAuthorizationInfo};
