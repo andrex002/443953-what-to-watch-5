@@ -18,7 +18,7 @@ const FilmScreen = (props) => {
   const {films, onFilmCardClick, currentFilmId, authorizationStatus} = props;
 
   const currentFilm = films.find((film) => film.id === currentFilmId);
-  const {title, genre, year, image, id, bgImage, bgColor} = currentFilm;
+  const {title, genre, year, image, id, bgColor} = currentFilm;
   const similarFilms = films.filter((film) => film.genre === genre).slice(0, filmsCount.SIMILAR);
 
   return (
@@ -62,7 +62,7 @@ const FilmScreen = (props) => {
                 </Link>
                 {
                   authorizationStatus === AuthorizationStatus.AUTH ?
-                  <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link> : ``
+                    <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link> : ``
                 }
               </div>
             </div>

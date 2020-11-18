@@ -6,17 +6,17 @@ import {AuthorizationStatus} from "../../const";
 
 const UserBlock = (props) => {
   const {authorizationStatus, userName, userAvatar} = props;
-  console.log(props)
+
   return (
     <div className="user-block">
-      {authorizationStatus === AuthorizationStatus.AUTH ? 
+      {authorizationStatus === AuthorizationStatus.AUTH ?
         <div className="user-block__avatar">
           <img src={userAvatar} alt={userName} width="63" height="63" />
         </div>
         : <Link to={`/login`} className="user-block__link">Sign in </Link>
       }
     </div>
-    
+
   );
 };
 
@@ -24,7 +24,7 @@ UserBlock.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   userName: PropTypes.oneOfType([PropTypes.string.isRequired, () => null]),
   userAvatar: PropTypes.oneOfType([PropTypes.string.isRequired, () => null]),
-}
+};
 
 const mapStateToProps = ({USER}) => ({
   authorizationStatus: USER.authorizationStatus,

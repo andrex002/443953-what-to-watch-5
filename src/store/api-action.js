@@ -29,10 +29,17 @@ const fetchComments = (id) => (dispatch, _getState, api) => (
 
 const checkAuth = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    // .catch((err) => {
-    //   throw err;
-    // })
+    .then((response) => {
+      dispatch(requireAuthorization(AuthorizationStatus.AUTH));
+      dispatch(saveAuthorizationInfo(response.data));
+    })
+    .catch((err) => {
+      if (err.response.status === 401) {
+        dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
+      } else {
+        throw err;
+      }
+    })
 );
 
 const login = ({email, password}) => (dispatch, _getState, api) => (
@@ -40,6 +47,9 @@ const login = ({email, password}) => (dispatch, _getState, api) => (
     .then((response) => dispatch(saveAuthorizationInfo(response.data)))
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
     .then(() => dispatch(redirectToRoute(`/`)))
+    .catch(() => {
+      dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
+    })
 );
 
 export {fetchFilmsList, fetchPromoFilm, fetchFavoriteFilms, fetchComments, checkAuth, login};
