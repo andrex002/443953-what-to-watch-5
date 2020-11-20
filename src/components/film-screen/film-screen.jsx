@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import FilmCardsList from "../film-cards-list/film-cards-list";
@@ -10,15 +10,19 @@ import {filmsCount, AuthorizationStatus} from "../../const";
 import {connect} from "react-redux";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
+import {fetchFilmById} from "../../store/api-action";
 
 const FilmCardsListWrapped = withActiveCard(FilmCardsList);
 const TabsWrapped = withActiveTab(Tabs);
 
 const FilmScreen = (props) => {
-  const {films, onFilmCardClick, currentFilmId, authorizationStatus} = props;
+  const {films, onFilmCardClick, loadFilm, currentFilmId, currentFilm, authorizationStatus} = props;
 
-  const currentFilm = films.find((film) => film.id === currentFilmId);
-  const {title, genre, year, image, id, bgColor} = currentFilm;
+  useEffect(() => {
+    loadFilm(currentFilmId);
+  }, [currentFilmId]);
+
+  const {title, genre, year, image, id, bgColor, bgImage} = currentFilm;
   const similarFilms = films.filter((film) => film.genre === genre).slice(0, filmsCount.SIMILAR);
 
   return (
@@ -26,7 +30,7 @@ const FilmScreen = (props) => {
       <section className="movie-card movie-card--full" style={{backgroundColor: bgColor}}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={image} alt={title} />
+            <img src={bgImage} alt={title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -98,21 +102,32 @@ const FilmScreen = (props) => {
 
 FilmScreen.propTypes = {
   currentFilmId: PropTypes.number.isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
+  currentFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
+    bgImage: PropTypes.string.isRequired,
+    bgColor: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired
-  })),
+  }),
+  onFilmCardClick: PropTypes.func.isRequired,
+  loadFilm: PropTypes.func.isRequired,
+  films: PropTypes.array.isRequired,
   authorizationStatus: PropTypes.string.isRequired
 };
 
 const mapStateToProps = ({DATA, USER}) => ({
   films: DATA.allFilms,
+  currentFilm: DATA.currentFilm,
   authorizationStatus: USER.authorizationStatus
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  loadFilm(id) {
+    dispatch(fetchFilmById(id));
+  }
+});
+
 export {FilmScreen};
-export default connect(mapStateToProps)(FilmScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(FilmScreen);

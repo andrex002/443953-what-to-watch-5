@@ -5,9 +5,12 @@ const initialState = {
   allFilms: [],
   filteredFilms: [],
   promoFilm: {},
+  currentFilm: {},
   favoriteFilms: [],
   comments: [],
-  numberFilmsShown: filmsCount.PER_STEP
+  numberFilmsShown: filmsCount.PER_STEP,
+  isCommentSending: false,
+  isCommentSendError: false
 };
 
 const getNumberFilmsShown = (state) => {
@@ -20,6 +23,10 @@ const filmsData = (state = initialState, action) => {
       return Object.assign({}, state, {
         allFilms: action.payload,
         filteredFilms: action.payload
+      });
+    case ActionType.LOAD_FILM:
+      return Object.assign({}, state, {
+        currentFilm: action.payload
       });
     case ActionType.LOAD_PROMO:
       return Object.assign({}, state, {
@@ -40,6 +47,14 @@ const filmsData = (state = initialState, action) => {
     case ActionType.CLEAR_SHOWN_FILMS:
       return Object.assign({}, state, {
         numberFilmsShown: filmsCount.PER_STEP
+      });
+    case ActionType.SET_COMMENT_SENDING:
+      return Object.assign({}, state, {
+        isCommentSending: action.payload
+      });
+    case ActionType.SET_COMMENT_SEND_ERROR:
+      return Object.assign({}, state, {
+        isCommentSendError: action.payload
       });
   }
 

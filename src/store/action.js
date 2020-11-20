@@ -1,5 +1,6 @@
 const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
+  LOAD_FILM: `LOAD_FILM`,
   LOAD_PROMO: `LOAD_PROMO`,
   LOAD_FAVORITES: `LOAD_FAVORITES`,
   LOAD_COMMENTS: `LOAD_COMMENTS`,
@@ -8,12 +9,19 @@ const ActionType = {
   CLEAR_SHOWN_FILMS: `CLEAR_SHOWN_FILMS`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
-  SAVE_AUTHORIZATION_INFO: `SAVE_AUTHORIZATION_INFO`
+  SAVE_AUTHORIZATION_INFO: `SAVE_AUTHORIZATION_INFO`,
+  SET_COMMENT_SENDING: `SET_COMMENT_SENDING`,
+  SET_COMMENT_SEND_ERROR: `SET_COMMENT_SEND_ERROR`
 };
 
 const loadFilms = (films) => ({
   type: ActionType.LOAD_FILMS,
   payload: films
+});
+
+const loadFilmById = (film) => ({
+  type: ActionType.LOAD_FILM,
+  payload: film
 });
 
 const loadPromo = (film) => ({
@@ -59,4 +67,14 @@ const saveAuthorizationInfo = (data) => ({
   payload: data
 });
 
-export {ActionType, loadFilms, loadPromo, loadFavorites, loadComments, changeFilter, showMoreFilms, clearShownFilms, requireAuthorization, redirectToRoute, saveAuthorizationInfo};
+const setCommentSending = (bool) => ({
+  type: ActionType.SET_COMMENT_SENDING,
+  payload: bool
+});
+
+const setCommentSendError = (bool) => ({
+  type: ActionType.SET_COMMENT_SEND_ERROR,
+  payload: bool
+});
+
+export {ActionType, loadFilms, loadFilmById, loadPromo, loadFavorites, loadComments, changeFilter, showMoreFilms, clearShownFilms, requireAuthorization, redirectToRoute, saveAuthorizationInfo, setCommentSending, setCommentSendError};
