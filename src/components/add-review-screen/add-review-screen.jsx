@@ -13,13 +13,13 @@ const AddReviewScreen = (props) => {
   const {films, currentFilmId} = props;
   const currentFilm = films.find((film) => film.id === currentFilmId);
 
-  const {bgImage, title, image} = currentFilm;
+  const {bgImage, title, image, bgColor} = currentFilm;
 
   return (
-    <section className="movie-card movie-card--full">
+    <section className="movie-card movie-card--full" style={{backgroundColor: bgColor}}>
       <div className="movie-card__header">
         <div className="movie-card__bg">
-          <img src={`img/${bgImage}`} alt={title} />
+          <img src={bgImage} alt={title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -31,7 +31,7 @@ const AddReviewScreen = (props) => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to="/films/:id" className="breadcrumbs__link">{title}</Link>
+                <Link to={`/films/${currentFilmId}`} className="breadcrumbs__link">{title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -44,13 +44,13 @@ const AddReviewScreen = (props) => {
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">
-          <img src={`img/${image}`} alt={title} width="218" height="327" />
+          <img src={image} alt={title} width="218" height="327" />
         </div>
       </div>
 
       <div className="add-review">
 
-        <AddReviewFormWrapped />
+        <AddReviewFormWrapped currentFilmId={currentFilmId} />
 
       </div>
 
@@ -59,7 +59,7 @@ const AddReviewScreen = (props) => {
 };
 
 AddReviewScreen.propTypes = {
-  currentFilmId: PropTypes.string.isRequired,
+  currentFilmId: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
