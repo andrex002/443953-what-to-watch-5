@@ -9,6 +9,9 @@ const withUserReview = (Component) => {
         currentRating: ``,
         comment: ``
       };
+
+      this._handleCommentChange = this._handleCommentChange.bind(this);
+      this._handleRatingChange = this._handleRatingChange.bind(this);
     }
 
     _handleRatingChange(evt) {
@@ -24,10 +27,11 @@ const withUserReview = (Component) => {
     }
 
     render() {
-      const {currentRating} = this.state;
+      const {currentRating, comment} = this.state;
       return (
         <Component {...this.props}
           currentRating={currentRating}
+          comment={comment}
           handleRatingChange={this._handleRatingChange}
           handleCommentChange={this._handleCommentChange}
         />

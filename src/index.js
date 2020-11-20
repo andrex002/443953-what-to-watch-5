@@ -8,8 +8,9 @@ import {createAPI} from "./services/api";
 import App from "./components/app/app";
 import rootReducer from "./store/reducers/root-reducer";
 import {requireAuthorization} from "./store/action";
-import {fetchFilmsList, fetchPromoFilm} from "./store/api-action";
+import {checkAuth, fetchFilmsList, fetchPromoFilm} from "./store/api-action";
 import {AuthorizationStatus} from "./const";
+import {redirect} from "./store/middlewares/redirect";
 
 const api = createAPI(
     () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH))
@@ -18,14 +19,17 @@ const api = createAPI(
 const store = createStore(
     rootReducer,
     composeWithDevTools(
-        applyMiddleware(thunk.withExtraArgument(api))
+        applyMiddleware(thunk.withExtraArgument(api)),
+        applyMiddleware(redirect)
     )
 );
 
 Promise.all([
   store.dispatch(fetchFilmsList()),
   store.dispatch(fetchPromoFilm()),
-]).then(() => {
+  store.dispatch(checkAuth())
+])
+.then(() => {
   ReactDOM.render(
       <Provider store={store}>
         <App />

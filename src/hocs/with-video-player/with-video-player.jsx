@@ -11,6 +11,8 @@ const withVideoPlayer = (Component) => {
         isPlaying: false
       };
       this._videoRef = createRef();
+
+      this._play = this._play.bind(this);
     }
 
     _play() {

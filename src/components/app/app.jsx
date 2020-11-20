@@ -1,5 +1,7 @@
 import React from "react";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
+import PrivateRoute from "../private-route/private-route";
+import browserHistory from "../../browser-history";
 import MainScreen from "../main-screen/main-screen";
 import AuthScreen from "../auth-screen/auth-screen";
 import FilmScreen from "../film-screen/film-screen";
@@ -12,7 +14,7 @@ const PlayerScreenWrapped = withPlayerScreen(PlayerScreen);
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route exact
           path="/"
@@ -26,14 +28,14 @@ const App = () => {
         <Route exact path="/login">
           <AuthScreen />
         </Route>
-        <Route exact path="/mylist"
+        <PrivateRoute exact path="/mylist"
           render={({history}) => (
             <MyListScreen
               onFilmCardClick={(id) => history.push(`/films/${id}`)}
             />
           )}
         >
-        </Route>
+        </PrivateRoute>
         <Route exact
           path="/films/:id"
           render={({history, match}) => (
@@ -44,7 +46,7 @@ const App = () => {
           )}
         >
         </Route>
-        <Route exact
+        <PrivateRoute exact
           path="/films/:id/review"
           render={({match}) => (
             <AddReviewScreen
@@ -52,7 +54,7 @@ const App = () => {
             />
           )}
         >
-        </Route>
+        </PrivateRoute>
         <Route exact
           path="/player/:id"
           render={({match}) => (
