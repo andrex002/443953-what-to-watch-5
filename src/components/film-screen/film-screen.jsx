@@ -11,18 +11,25 @@ import {connect} from "react-redux";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
 import {fetchFilmById} from "../../store/api-action";
+import {setIsFilmByIdLoading} from "../../store/action";
+import Loading from "../loading/loading";
+import MyListButton from "../my-list-button/my-list-button";
 
 const FilmCardsListWrapped = withActiveCard(FilmCardsList);
 const TabsWrapped = withActiveTab(Tabs);
 
 const FilmScreen = (props) => {
-  const {films, onFilmCardClick, loadFilm, currentFilmId, currentFilm, authorizationStatus} = props;
+  const {films, onFilmCardClick, loadFilm, currentFilmId, currentFilm, authorizationStatus, isFilmByIdLoading} = props;
 
   useEffect(() => {
     loadFilm(currentFilmId);
   }, [currentFilmId]);
 
-  const {title, genre, year, image, id, bgColor, bgImage} = currentFilm;
+  if (isFilmByIdLoading) {
+    return (<Loading />);
+  }
+
+  const {title, genre, year, image, id, bgColor, bgImage, isFavorite} = currentFilm;
   const similarFilms = films.filter((film) => film.genre === genre).slice(0, filmsCount.SIMILAR);
 
   return (
@@ -58,12 +65,7 @@ const FilmScreen = (props) => {
                   </svg>
                   <span>Play</span>
                 </Link>
-                <Link to="/mylist" className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </Link>
+                <MyListButton id={id} isFavorite={isFavorite} />
                 {
                   authorizationStatus === AuthorizationStatus.AUTH ?
                     <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link> : ``
@@ -109,22 +111,26 @@ FilmScreen.propTypes = {
     image: PropTypes.string.isRequired,
     bgImage: PropTypes.string.isRequired,
     bgColor: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool.isRequired
   }),
   onFilmCardClick: PropTypes.func.isRequired,
   loadFilm: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  authorizationStatus: PropTypes.string.isRequired,
+  isFilmByIdLoading: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = ({DATA, USER}) => ({
   films: DATA.allFilms,
   currentFilm: DATA.currentFilm,
-  authorizationStatus: USER.authorizationStatus
+  authorizationStatus: USER.authorizationStatus,
+  isFilmByIdLoading: DATA.isFilmByIdLoading
 });
 
 const mapDispatchToProps = (dispatch) => ({
   loadFilm(id) {
+    dispatch(setIsFilmByIdLoading(true));
     dispatch(fetchFilmById(id));
   }
 });

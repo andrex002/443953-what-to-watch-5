@@ -11,7 +11,9 @@ const ActionType = {
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   SAVE_AUTHORIZATION_INFO: `SAVE_AUTHORIZATION_INFO`,
   SET_COMMENT_SENDING: `SET_COMMENT_SENDING`,
-  SET_COMMENT_SEND_ERROR: `SET_COMMENT_SEND_ERROR`
+  SET_COMMENT_SEND_ERROR: `SET_COMMENT_SEND_ERROR`,
+  LOAD_FAVORITES: `LOAD_FAVORITES`,
+  SET_FILM_BY_ID_LOADING: `SET_FILM_BY_ID_LOADING`
 };
 
 const loadFilms = (films) => ({
@@ -77,4 +79,10 @@ const setCommentSendError = (bool) => ({
   payload: bool
 });
 
-export {ActionType, loadFilms, loadFilmById, loadPromo, loadFavorites, loadComments, changeFilter, showMoreFilms, clearShownFilms, requireAuthorization, redirectToRoute, saveAuthorizationInfo, setCommentSending, setCommentSendError};
+const setIsFilmByIdLoading = (bool) => ({
+  type: ActionType.SET_FILM_BY_ID_LOADING,
+  payload: bool
+});
+
+
+export {ActionType, loadFilms, loadFilmById, loadPromo, loadFavorites, loadComments, changeFilter, showMoreFilms, clearShownFilms, requireAuthorization, redirectToRoute, saveAuthorizationInfo, setCommentSending, setCommentSendError, setIsFilmByIdLoading};

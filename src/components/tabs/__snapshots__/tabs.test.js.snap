@@ -1,0 +1,182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Tabs render correctly Active tab Details 1`] = `
+<div
+  className="movie-card__desc"
+>
+  <nav
+    className="movie-nav movie-card__nav"
+  >
+    <ul
+      className="movie-nav__list"
+    >
+      <li
+        className="movie-nav__item"
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+          onClick={[Function]}
+        >
+          Overview
+        </a>
+      </li>
+      <li
+        className="movie-nav__item movie-nav__item--active"
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+          onClick={[Function]}
+        >
+          Details
+        </a>
+      </li>
+      <li
+        className="movie-nav__item"
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+          onClick={[Function]}
+        >
+          Reviews
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <FilmPageDetails
+    actors={
+      Array [
+        "Bill Murray",
+        "Edward Norton",
+        "Jude Law",
+        "Willem Dafoe",
+        "Saoirse Ronan",
+      ]
+    }
+    director="Wes Andreson"
+    duration={99}
+    genre="Comedy"
+    year={2014}
+  />
+</div>
+`;
+
+exports[`Should Tabs render correctly Active tab Overview 1`] = `
+<div
+  className="movie-card__desc"
+>
+  <nav
+    className="movie-nav movie-card__nav"
+  >
+    <ul
+      className="movie-nav__list"
+    >
+      <li
+        className="movie-nav__item movie-nav__item--active"
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+          onClick={[Function]}
+        >
+          Overview
+        </a>
+      </li>
+      <li
+        className="movie-nav__item"
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+          onClick={[Function]}
+        >
+          Details
+        </a>
+      </li>
+      <li
+        className="movie-nav__item"
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+          onClick={[Function]}
+        >
+          Reviews
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <FilmPageOverview
+    actors={
+      Array [
+        "Bill Murray",
+        "Edward Norton",
+        "Jude Law",
+        "Willem Dafoe",
+        "Saoirse Ronan",
+      ]
+    }
+    description="In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege."
+    director="Wes Andreson"
+    rating={
+      Object {
+        "count": 240,
+        "score": 8.9,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Should Tabs render correctly Active tab Reviews 1`] = `
+<div
+  className="movie-card__desc"
+>
+  <nav
+    className="movie-nav movie-card__nav"
+  >
+    <ul
+      className="movie-nav__list"
+    >
+      <li
+        className="movie-nav__item"
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+          onClick={[Function]}
+        >
+          Overview
+        </a>
+      </li>
+      <li
+        className="movie-nav__item"
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+          onClick={[Function]}
+        >
+          Details
+        </a>
+      </li>
+      <li
+        className="movie-nav__item movie-nav__item--active"
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+          onClick={[Function]}
+        >
+          Reviews
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <FilmPageReviews
+    filmId={1}
+  />
+</div>
+`;

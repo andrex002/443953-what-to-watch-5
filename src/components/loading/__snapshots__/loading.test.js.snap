@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Loading render correctly 1`] = `
+<div
+  className="user-page"
+>
+  <header
+    className="page-header user-page__head"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link"
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+  </header>
+  <div
+    className="sign-in user-page__content"
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\">
+  <circle transform=\\"translate(8 0)\\" cx=\\"0\\" cy=\\"16\\" r=\\"0\\"> 
+    <animate attributeName=\\"r\\" values=\\"0; 4; 0; 0\\" dur=\\"1.2s\\" repeatCount=\\"indefinite\\" begin=\\"0\\"
+      keytimes=\\"0;0.2;0.7;1\\" keySplines=\\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8\\" calcMode=\\"spline\\" />
+  </circle>
+  <circle transform=\\"translate(16 0)\\" cx=\\"0\\" cy=\\"16\\" r=\\"0\\"> 
+    <animate attributeName=\\"r\\" values=\\"0; 4; 0; 0\\" dur=\\"1.2s\\" repeatCount=\\"indefinite\\" begin=\\"0.3\\"
+      keytimes=\\"0;0.2;0.7;1\\" keySplines=\\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8\\" calcMode=\\"spline\\" />
+  </circle>
+  <circle transform=\\"translate(24 0)\\" cx=\\"0\\" cy=\\"16\\" r=\\"0\\"> 
+    <animate attributeName=\\"r\\" values=\\"0; 4; 0; 0\\" dur=\\"1.2s\\" repeatCount=\\"indefinite\\" begin=\\"0.6\\"
+      keytimes=\\"0;0.2;0.7;1\\" keySplines=\\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8\\" calcMode=\\"spline\\" />
+  </circle>
+</svg>
+",
+        }
+      }
+      style={
+        Object {
+          "fill": "#dfcf77",
+          "height": "50%",
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+  <footer
+    className="page-footer"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link logo__link--light"
+        href="main.html"
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <div
+      className="copyright"
+    >
+      <p>
+        © 2019 What to watch Ltd.
+      </p>
+    </div>
+  </footer>
+</div>
+`;

@@ -16,4 +16,9 @@ const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`
 };
 
-export {FilmTabs, filmsCount, VIDEO_PLAY_TIMEOUT, AuthorizationStatus};
+const StatusIsFavorite = {
+  ADD: 1,
+  REMOVE: 0
+};
+
+export {FilmTabs, filmsCount, VIDEO_PLAY_TIMEOUT, AuthorizationStatus, StatusIsFavorite};

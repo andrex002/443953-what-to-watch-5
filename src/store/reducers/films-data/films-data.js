@@ -10,7 +10,8 @@ const initialState = {
   comments: [],
   numberFilmsShown: filmsCount.PER_STEP,
   isCommentSending: false,
-  isCommentSendError: false
+  isCommentSendError: false,
+  isFilmByIdLoading: true
 };
 
 const getNumberFilmsShown = (state) => {
@@ -55,6 +56,14 @@ const filmsData = (state = initialState, action) => {
     case ActionType.SET_COMMENT_SEND_ERROR:
       return Object.assign({}, state, {
         isCommentSendError: action.payload
+      });
+    case ActionType.SET_FILM_BY_ID_LOADING:
+      return Object.assign({}, state, {
+        isFilmByIdLoading: action.payload,
+      });
+    case ActionType.LOAD_FAVORITES:
+      return Object.assign({}, state, {
+        favoriteFilms: action.payload,
       });
   }
 

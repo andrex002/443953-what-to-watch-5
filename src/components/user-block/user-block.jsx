@@ -11,7 +11,9 @@ const UserBlock = (props) => {
     <div className="user-block">
       {authorizationStatus === AuthorizationStatus.AUTH ?
         <div className="user-block__avatar">
-          <img src={userAvatar} alt={userName} width="63" height="63" />
+          <Link to={`/mylist`}>
+            <img src={userAvatar} alt={userName} width="63" height="63" />
+          </Link>
         </div>
         : <Link to={`/login`} className="user-block__link">Sign in </Link>
       }
