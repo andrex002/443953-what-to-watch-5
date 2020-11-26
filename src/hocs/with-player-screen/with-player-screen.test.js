@@ -1,15 +1,15 @@
-import React, {createRef} from "react";
+import React from "react";
 import renderer from "react-test-renderer";
-import withPlayerScreen from "./with-player-screen";
 import PropTypes from "prop-types";
-
-const forwardedRef = createRef();
+import withPlayerScreen from "./with-player-screen";
+import {films} from "../../test-data";
 
 const MockComponent = (props) => {
-  const {children} = props;
+  const {children, renderPlayer} = props;
 
   return (
     <React.Fragment>
+      {renderPlayer(films[0])}
       {children}
     </React.Fragment>
   );
@@ -20,6 +20,7 @@ MockComponent.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
+  renderPlayer: PropTypes.func.isRequired,
 };
 
 const MockComponentWrapped = withPlayerScreen(MockComponent);
@@ -29,15 +30,11 @@ it(`withPlayerScreen is rendered correctly`, () => {
   const tree = renderer.create((
     
     <MockComponentWrapped>
-         <React.Fragment />
-      </MockComponentWrapped>
+      <React.Fragment />
+    </MockComponentWrapped>
   ), {
-    createNodeMock(MockComponent) {
-      const forwardedRef = createRef();
-      
-      return (
-        <MockComponent forwardedRef={forwardedRef} />
-      );
+    createNodeMock() {
+      return {};
     }
   }).toJSON();
 

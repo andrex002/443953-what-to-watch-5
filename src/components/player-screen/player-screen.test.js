@@ -1,18 +1,14 @@
-import React, {createRef} from "react";
+import React from "react";
 import renderer from "react-test-renderer";
 import {BrowserRouter} from "react-router-dom";
 import {PlayerScreen} from "./player-screen";
 import {films, noop} from "../../test-data";
-
-const forwardedRef = createRef();
-
 
 describe(`Should PlayerScreen render correctly`, () => {
   it(`On play`, () => {
     const tree = renderer.create(
       <BrowserRouter>
         <PlayerScreen
-          forwardedRef={forwardedRef}
           films={films}
           duration={100}
           progress={50}
@@ -21,6 +17,7 @@ describe(`Should PlayerScreen render correctly`, () => {
           isPlaying={true}
           onPlayBtnClick={noop}
           onFullscreenClick={noop}
+          renderPlayer={noop}
         />
       </BrowserRouter>
     ).toJSON();
@@ -32,7 +29,6 @@ describe(`Should PlayerScreen render correctly`, () => {
     const tree = renderer.create(
       <BrowserRouter>
         <PlayerScreen
-          forwardedRef={forwardedRef}
           films={films}
           duration={100}
           progress={50}
@@ -41,6 +37,7 @@ describe(`Should PlayerScreen render correctly`, () => {
           isPlaying={false}
           onPlayBtnClick={noop}
           onFullscreenClick={noop}
+          renderPlayer={noop}
         />
       </BrowserRouter>
     ).toJSON();

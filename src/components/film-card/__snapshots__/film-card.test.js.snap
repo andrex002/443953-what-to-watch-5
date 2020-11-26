@@ -9,11 +9,11 @@ exports[`Should FilmCard render correctly With active 1`] = `
   onMouseLeave={[Function]}
 >
   <video
-    height={175}
+    height="175"
     muted={true}
     poster="img/the-grand-budapest-hotel-poster.jpg"
     src="https://some-link"
-    width={280}
+    width="280"
   />
   <h3
     className="small-movie-card__title"

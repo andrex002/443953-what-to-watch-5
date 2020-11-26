@@ -1,11 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should VideoPlayer render correctly 1`] = `
-<video
-  height={175}
-  muted={true}
-  poster="img/the-grand-budapest-hotel-poster.jpg"
-  src="https://some-link"
-  width={280}
-/>
-`;
+exports[`Should VideoPlayer render correctly 1`] = `null`;

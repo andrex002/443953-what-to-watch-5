@@ -211,7 +211,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          data-id={1}
+          data-id={2}
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -231,36 +231,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/films/1"
-              onClick={[Function]}
-            >
-              The Grand Budapest Hotel
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          data-id={1}
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="The Grand Budapest Hotel"
-              height="175"
-              src="img/the-grand-budapest-hotel-poster.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="/films/1"
+              href="/films/2"
               onClick={[Function]}
             >
               The Grand Budapest Hotel

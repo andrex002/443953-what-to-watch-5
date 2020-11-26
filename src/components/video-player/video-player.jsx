@@ -3,31 +3,19 @@ import PropTypes from "prop-types";
 
 const VideoPlayer = (props) => {
 
-  const {srcVideo, poster, width, height, forwardedRef} = props;
+  const {srcVideo, poster, renderPlayer} = props;
+  
   return (
-    <video
-      ref={forwardedRef}
-      src={srcVideo}
-      poster={poster}
-      width={width}
-      height={height}
-      muted
-    >
-    </video>
+    <React.Fragment>
+      {renderPlayer(srcVideo, poster)}
+    </React.Fragment>
   );
 };
 
-VideoPlayer.defaultProps = {
-  width: 280,
-  height: 175
-};
-
 VideoPlayer.propTypes = {
-  forwardedRef: PropTypes.object.isRequired,
   srcVideo: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired
+  renderPlayer: PropTypes.func.isRequired,
 };
 
 export default VideoPlayer;

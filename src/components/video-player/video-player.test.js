@@ -1,26 +1,25 @@
-import React, {createRef} from "react";
+import React from "react";
 import renderer from "react-test-renderer";
 import VideoPlayer from "./video-player";
-import {films} from "../../test-data";
+import {films, noop} from "../../test-data";
+import {BrowserRouter} from "react-router-dom";
 
-const {srcVideo, image: poster} = films[0];
+const {video: srcVideo, image: poster} = films[0];
 
-const forwardedRef = createRef();
 
 it(`Should VideoPlayer render correctly`, () => {
   const tree = renderer.create(
+    <BrowserRouter>
     <VideoPlayer
-      forwardedRef={forwardedRef}
       srcVideo={srcVideo}
       poster={poster}
-      width={280}
-      height={175}
-    />, {
-      createNodeMock() {
-        return {};
-      }
+      renderPlayer={noop}
+    />
+    </BrowserRouter>, {
+    createNodeMock() {
+      return {};
     }
-  ).toJSON();
+    }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

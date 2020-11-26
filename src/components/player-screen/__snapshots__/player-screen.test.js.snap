@@ -4,11 +4,6 @@ exports[`Should PlayerScreen render correctly On pause 1`] = `
 <div
   className="player"
 >
-  <video
-    className="player__video"
-    poster="img/the-grand-budapest-hotel-poster.jpg"
-    src="https://some-link"
-  />
   <button
     className="player__exit"
     onClick={[Function]}
@@ -100,11 +95,6 @@ exports[`Should PlayerScreen render correctly On play 1`] = `
 <div
   className="player"
 >
-  <video
-    className="player__video"
-    poster="img/the-grand-budapest-hotel-poster.jpg"
-    src="https://some-link"
-  />
   <button
     className="player__exit"
     onClick={[Function]}

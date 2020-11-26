@@ -4,7 +4,7 @@ import FilmCard from "./film-card";
 import {BrowserRouter} from "react-router-dom";
 import {films, noop} from "../../test-data";
 
-const {image, title, srcVideo} = films[0];
+const {image, title, video: srcVideo} = films[0];
 
 describe(`Should FilmCard render correctly`, () => {
   it(`With active`, () => {

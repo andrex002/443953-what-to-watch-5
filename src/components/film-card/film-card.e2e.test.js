@@ -1,7 +1,7 @@
 import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import {FilmCard} from "./film-card";
+import FilmCard from "./film-card";
 import {films, noop} from "../../test-data";
 
 const {image, title, srcVideo} = films[0];

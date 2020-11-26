@@ -27,6 +27,32 @@ const adaptFilmToClient = (film) => {
   return adaptedFilm;
 };
 
+const adaptFilmToServer = (film) => {
+  const adaptedFilm = Object.assign(
+    {},
+    {
+      background_color: film.bgColor,
+      background_image: film.bgImage,
+      description: film.description,
+      director: film.director,
+      genre: film.genre,
+      id: film.id,
+      is_favorite: film.isFavorite,
+      name: film.title,
+      poster_image: film.image,
+      preview_image: film.previewImage,
+      preview_video_link: film.previewVideo,
+      rating: film.rating.score,
+      released: film.year,
+      run_time: film.duration,
+      scores_count: film.rating.count,
+      starring: film.actors,
+      video_link: film.video
+    }
+  );
+  return adaptedFilm;
+};
+
 const adaptCommentToClient = (comment) => {
   const adaptedComment = Object.assign(
       {},
@@ -43,4 +69,22 @@ const adaptCommentToClient = (comment) => {
   return adaptedComment;
 };
 
-export {adaptFilmToClient, adaptCommentToClient};
+const adaptCommentToServer = (comment) => {
+  const adaptedComment = Object.assign(
+      {},
+      {
+        comment: comment.textComment,
+        date: comment.date,
+        id: comment.id,
+        rating: comment.rating,
+        user: {
+          id: comment.userId,
+          name: comment.userName
+        }
+      }
+  );
+
+  return adaptedComment;
+};
+
+export {adaptFilmToClient, adaptCommentToClient, adaptFilmToServer, adaptCommentToServer};
