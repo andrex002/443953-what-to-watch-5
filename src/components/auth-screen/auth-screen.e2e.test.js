@@ -11,12 +11,12 @@ it(`AuthScreen submit`, () => {
   const formSendPrevention = jest.fn();
 
   const wrapper = mount(
-    <BrowserRouter>
-      <AuthScreen
-        onSubmit={onSignInSubmit}
-        authorizationStatus={`NO_AUTH`}
-      />
-    </BrowserRouter>
+      <BrowserRouter>
+        <AuthScreen
+          onSubmit={onSignInSubmit}
+          authorizationStatus={`NO_AUTH`}
+        />
+      </BrowserRouter>
   );
 
   wrapper.find(`input[name="user-email"]`).instance().value = `test@test.com`;

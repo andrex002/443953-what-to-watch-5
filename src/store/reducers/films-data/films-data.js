@@ -61,10 +61,6 @@ const filmsData = (state = initialState, action) => {
       return Object.assign({}, state, {
         isFilmByIdLoading: action.payload,
       });
-    case ActionType.LOAD_FAVORITES:
-      return Object.assign({}, state, {
-        favoriteFilms: action.payload,
-      });
   }
 
   return state;

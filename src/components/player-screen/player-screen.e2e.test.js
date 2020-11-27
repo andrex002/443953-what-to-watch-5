@@ -12,23 +12,23 @@ describe(`PlayerScreen callback should be called on`, () => {
     const onPlayClick = jest.fn();
 
     const wrapper = mount(
-      <BrowserRouter>
-        <PlayerScreen
-          duration={90}
-          progress={50}
-          onPlayBtnClick={onPlayClick}
-          onFullscreenClick={noop}
-          currentFilmId={1}
-          films={films}
-          promoFilm={films[0]}
-          isPlaying={true}
-          renderPlayer={noop}
-        />
-      </BrowserRouter>
+        <BrowserRouter>
+          <PlayerScreen
+            duration={90}
+            progress={50}
+            onPlayBtnClick={onPlayClick}
+            onFullscreenClick={noop}
+            currentFilmId={1}
+            films={films}
+            promoFilm={films[0]}
+            isPlaying={true}
+            renderPlayer={noop}
+          />
+        </BrowserRouter>
     );
 
     const playButton = wrapper.find(`.player__play`);
-    
+
     playButton.simulate(`click`);
     expect(onPlayClick).toHaveBeenCalledTimes(1);
   });
@@ -37,19 +37,19 @@ describe(`PlayerScreen callback should be called on`, () => {
     const onFullscreenClick = jest.fn();
 
     const wrapper = mount(
-      <BrowserRouter>
-        <PlayerScreen
-          renderPlayer={noop}
-          duration={90}
-          progress={50}
-          onPlayBtnClick={noop}
-          onFullscreenClick={onFullscreenClick}
-          currentFilmId={1}
-          films={films}
-          promoFilm={films[0]}
-          isPlaying={true}
-        />
-      </BrowserRouter>
+        <BrowserRouter>
+          <PlayerScreen
+            renderPlayer={noop}
+            duration={90}
+            progress={50}
+            onPlayBtnClick={noop}
+            onFullscreenClick={onFullscreenClick}
+            currentFilmId={1}
+            films={films}
+            promoFilm={films[0]}
+            isPlaying={true}
+          />
+        </BrowserRouter>
     );
 
     const fullscreenButton = wrapper.find(`.player__full-screen`);

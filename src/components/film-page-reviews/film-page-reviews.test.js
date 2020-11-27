@@ -5,12 +5,12 @@ import {noop, comments} from "../../test-data";
 
 it(`Should FilmPageReviews render correctly`, () => {
   const tree = renderer.create(
-    <FilmPageReviews
-      filmId={1}
-      loadComments={noop}
-      comments={comments}
-    />)
-  .toJSON();
+      <FilmPageReviews
+        filmId={1}
+        loadComments={noop}
+        comments={comments}
+      />
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

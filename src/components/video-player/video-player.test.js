@@ -9,17 +9,18 @@ const {video: srcVideo, image: poster} = films[0];
 
 it(`Should VideoPlayer render correctly`, () => {
   const tree = renderer.create(
-    <BrowserRouter>
-    <VideoPlayer
-      srcVideo={srcVideo}
-      poster={poster}
-      renderPlayer={noop}
-    />
-    </BrowserRouter>, {
-    createNodeMock() {
-      return {};
-    }
-    }).toJSON();
+      <BrowserRouter>
+        <VideoPlayer
+          srcVideo={srcVideo}
+          poster={poster}
+          renderPlayer={noop}
+        />
+      </BrowserRouter>, {
+        createNodeMock() {
+          return {};
+        }
+      }
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

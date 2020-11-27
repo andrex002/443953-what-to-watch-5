@@ -4,7 +4,7 @@ import Loading from "./loading";
 
 it(`Should Loading render correctly`, () => {
   const tree = renderer.create(
-    <Loading />
+      <Loading />
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

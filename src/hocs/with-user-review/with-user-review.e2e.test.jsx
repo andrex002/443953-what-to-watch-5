@@ -1,5 +1,5 @@
 import React from "react";
-import {configure, shallow, mount} from "enzyme";
+import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import withUserReview from "./with-user-review";
 import {Provider} from "react-redux";
@@ -15,30 +15,36 @@ const MockComponentWrapped = withUserReview(MockComponent);
 describe(`check withUserReview`, () => {
   it(`rating in withUserReview`, () => {
     const wrapper = mount(
-      <Provider store={mockStore}>
-        <MockComponentWrapped
-          currentFilmId={1}
-        />
-      </Provider>);
-      
-    expect(wrapper.find('MockComponentWrapped').state().rating).toEqual(``);
+        <Provider store={mockStore}>
+          <MockComponentWrapped
+            currentFilmId={1}
+          />
+        </Provider>
+    );
+    expect(wrapper.find(`WithUserReview`).state().currentRating).toEqual(``);
   });
 
   it(`comment in withUserReview`, () => {
-    const wrapper = shallow(
-        <MockComponentWrapped
-          currentFilmId={1}
-        />);
+    const wrapper = mount(
+        <Provider store={mockStore}>
+          <MockComponentWrapped
+            currentFilmId={1}
+          />
+        </Provider>
+    );
 
-    expect(wrapper.state().comment).toEqual(``);
+    expect(wrapper.find(`WithUserReview`).state().comment).toEqual(``);
   });
 
   it(`isReviewValid in withUserReview`, () => {
-    const wrapper = shallow(
-        <MockComponentWrapped
-          currentFilmId={1}
-        />);
+    const wrapper = mount(
+        <Provider store={mockStore}>
+          <MockComponentWrapped
+            currentFilmId={1}
+          />
+        </Provider>
+    );
 
-    expect(wrapper.state().isReviewValid).toEqual(false);
+    expect(wrapper.find(`WithUserReview`).state().isValidComment).toEqual(false);
   });
 });

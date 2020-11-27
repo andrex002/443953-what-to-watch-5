@@ -6,9 +6,9 @@ import {noop} from "../../test-data";
 it(`Should ShowMoreButton render correctly`, () => {
   const tree = renderer
     .create(
-      <ShowMoreButton
-        onShowMoreBtnClick={noop}
-      />
+        <ShowMoreButton
+          onShowMoreBtnClick={noop}
+        />
     )
     .toJSON();
 

@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 
 const PlayerScreen = (props) => {
   const {duration, progress, onPlayBtnClick, onFullscreenClick, renderPlayer, films, promoFilm, currentFilmId, isPlaying} = props;
-  
+
   const getCurrentFilm = () => {
     if (currentFilmId === promoFilm.id) {
       return promoFilm;

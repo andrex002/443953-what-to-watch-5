@@ -7,19 +7,19 @@ import {films, noop} from "../../test-data";
 describe(`Should PlayerScreen render correctly`, () => {
   it(`On play`, () => {
     const tree = renderer.create(
-      <BrowserRouter>
-        <PlayerScreen
-          films={films}
-          duration={100}
-          progress={50}
-          promoFilm={films[0]}
-          currentFilmId={1}
-          isPlaying={true}
-          onPlayBtnClick={noop}
-          onFullscreenClick={noop}
-          renderPlayer={noop}
-        />
-      </BrowserRouter>
+        <BrowserRouter>
+          <PlayerScreen
+            films={films}
+            duration={100}
+            progress={50}
+            promoFilm={films[0]}
+            currentFilmId={1}
+            isPlaying={true}
+            onPlayBtnClick={noop}
+            onFullscreenClick={noop}
+            renderPlayer={noop}
+          />
+        </BrowserRouter>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -27,19 +27,19 @@ describe(`Should PlayerScreen render correctly`, () => {
 
   it(`On pause`, () => {
     const tree = renderer.create(
-      <BrowserRouter>
-        <PlayerScreen
-          films={films}
-          duration={100}
-          progress={50}
-          promoFilm={films[0]}
-          currentFilmId={1}
-          isPlaying={false}
-          onPlayBtnClick={noop}
-          onFullscreenClick={noop}
-          renderPlayer={noop}
-        />
-      </BrowserRouter>
+        <BrowserRouter>
+          <PlayerScreen
+            films={films}
+            duration={100}
+            progress={50}
+            promoFilm={films[0]}
+            currentFilmId={1}
+            isPlaying={false}
+            onPlayBtnClick={noop}
+            onFullscreenClick={noop}
+            renderPlayer={noop}
+          />
+        </BrowserRouter>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

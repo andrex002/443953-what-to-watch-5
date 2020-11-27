@@ -11,11 +11,11 @@ jest.mock(`../film-page-reviews/film-page-reviews`, () => `FilmPageReviews`);
 describe(`Should Tabs render correctly`, () => {
   it(`Active tab Overview`, () => {
     const tree = renderer.create(
-      <Tabs
-        film={films[0]}
-        activeTab={FilmTabs.OVERVIEW}
-        handleActiveTab={noop} 
-      />
+        <Tabs
+          film={films[0]}
+          activeTab={FilmTabs.OVERVIEW}
+          handleActiveTab={noop}
+        />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -23,11 +23,11 @@ describe(`Should Tabs render correctly`, () => {
 
   it(`Active tab Details`, () => {
     const tree = renderer.create(
-      <Tabs
-        film={films[0]}
-        activeTab={FilmTabs.DETAILS}
-        handleActiveTab={noop} 
-      />
+        <Tabs
+          film={films[0]}
+          activeTab={FilmTabs.DETAILS}
+          handleActiveTab={noop}
+        />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -35,14 +35,13 @@ describe(`Should Tabs render correctly`, () => {
 
   it(`Active tab Reviews`, () => {
     const tree = renderer.create(
-      <Tabs
-        film={films[0]}
-        activeTab={FilmTabs.REVIEWS}
-        handleActiveTab={noop} 
-      />
+        <Tabs
+          film={films[0]}
+          activeTab={FilmTabs.REVIEWS}
+          handleActiveTab={noop}
+        />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 });
-

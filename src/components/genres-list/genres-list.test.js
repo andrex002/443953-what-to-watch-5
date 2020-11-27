@@ -5,12 +5,12 @@ import {films, noop} from "../../test-data";
 
 it(`Should GenresList render correctly`, () => {
   const tree = renderer.create(
-    <GenresList
-      films={films}
-      activeGenre={`Comedy`}
-      onGenreClick={noop}
-    />)
-  .toJSON();
+      <GenresList
+        films={films}
+        activeGenre={`Comedy`}
+        onGenreClick={noop}
+      />
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

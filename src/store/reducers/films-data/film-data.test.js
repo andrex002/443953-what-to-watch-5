@@ -230,5 +230,4 @@ describe(`Async operation work correctly`, () => {
         expect(dispatch).toHaveBeenCalledTimes(2);
       });
   });
-
 });

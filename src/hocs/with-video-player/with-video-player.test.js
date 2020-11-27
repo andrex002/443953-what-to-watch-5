@@ -28,7 +28,7 @@ const MockComponentWrapped = withVideoPlayer(MockComponent);
 
 it(`withVideoPlayer is rendered correctly`, () => {
   const tree = renderer.create((
-    
+
     <MockComponentWrapped>
       <React.Fragment />
     </MockComponentWrapped>

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {setIsFilmByIdLoading} from "../../store/action";
 import {sendFavoriteStatus} from "../../store/api-action";
 import {AuthorizationStatus} from "../../const";
 import {Link} from "react-router-dom";

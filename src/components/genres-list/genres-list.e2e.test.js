@@ -21,6 +21,6 @@ it(`GenresList callback should be called on genre click`, () => {
   const genreLink = wrapper.find(`.catalog__genres-link`).at(0);
 
   genreLink.simulate(`click`, {preventDefault: formSendPrevention});
-  
+
   expect(onGenreClick).toHaveBeenCalledTimes(1);
 });

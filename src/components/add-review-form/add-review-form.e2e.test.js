@@ -11,15 +11,15 @@ describe(`health check AddReviewForm`, () => {
     const handleRatingChange = jest.fn();
 
     const addReviewForm = mount(
-      <AddReviewForm
-        currentRating={`1`}
-        handleRatingChange={handleRatingChange}
-        handleCommentChange={noop}
-        handlePostBtnClick={noop}
-        isValidComment={true}
-        isCommentSending={false}
-        isCommentSendError={false}
-      />
+        <AddReviewForm
+          currentRating={`1`}
+          handleRatingChange={handleRatingChange}
+          handleCommentChange={noop}
+          handlePostBtnClick={noop}
+          isValidComment={true}
+          isCommentSending={false}
+          isCommentSendError={false}
+        />
     );
 
     const input1 = addReviewForm.find(`input`).at(0);
@@ -34,15 +34,15 @@ describe(`health check AddReviewForm`, () => {
     const handleCommentChange = jest.fn();
 
     const addReviewForm = mount(
-      <AddReviewForm
-        currentRating={`1`}
-        handleRatingChange={noop}
-        handleCommentChange={handleCommentChange}
-        handlePostBtnClick={noop}
-        isValidComment={true}
-        isCommentSending={false}
-        isCommentSendError={false}
-      />
+        <AddReviewForm
+          currentRating={`1`}
+          handleRatingChange={noop}
+          handleCommentChange={handleCommentChange}
+          handlePostBtnClick={noop}
+          isValidComment={true}
+          isCommentSending={false}
+          isCommentSendError={false}
+        />
     );
 
     const textarea = addReviewForm.find(`.add-review__textarea`);
@@ -58,15 +58,15 @@ describe(`health check AddReviewForm`, () => {
     const formSendPrevention = jest.fn();
 
     const addReviewForm = mount(
-      <AddReviewForm
-        currentRating={`1`}
-        handleRatingChange={noop}
-        handleCommentChange={noop}
-        handlePostBtnClick={handlePostBtnClick}
-        isValidComment={true}
-        isCommentSending={false}
-        isCommentSendError={false}
-      />
+        <AddReviewForm
+          currentRating={`1`}
+          handleRatingChange={noop}
+          handleCommentChange={noop}
+          handlePostBtnClick={handlePostBtnClick}
+          isValidComment={true}
+          isCommentSending={false}
+          isCommentSendError={false}
+        />
     );
 
     const postButton = addReviewForm.find(`.add-review__btn`);

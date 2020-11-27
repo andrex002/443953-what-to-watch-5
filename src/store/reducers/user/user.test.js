@@ -59,16 +59,15 @@ describe(`Async operation work correctly in User`, () => {
       .onPost(`/login`)
       .reply(200, {
         email: `sergeev-002@yandex.ru`,
-        
+
       });
 
     return loginLoader(dispatch, noop, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(3);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          
-            payload: {email: `sergeev-002@yandex.ru`}, "type": ActionType.SAVE_AUTHORIZATION_INFO
-            
+          type: ActionType.SAVE_AUTHORIZATION_INFO,
+          payload: {email: `sergeev-002@yandex.ru`}
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.REQUIRED_AUTHORIZATION,
@@ -78,8 +77,6 @@ describe(`Async operation work correctly in User`, () => {
           type: ActionType.REDIRECT_TO_ROUTE,
           payload: `/`,
         });
-
       });
   });
-
 });

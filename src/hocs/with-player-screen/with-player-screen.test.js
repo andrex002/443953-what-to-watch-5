@@ -28,7 +28,7 @@ const MockComponentWrapped = withPlayerScreen(MockComponent);
 
 it(`withPlayerScreen is rendered correctly`, () => {
   const tree = renderer.create((
-    
+
     <MockComponentWrapped>
       <React.Fragment />
     </MockComponentWrapped>

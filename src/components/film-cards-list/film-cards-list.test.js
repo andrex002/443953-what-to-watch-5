@@ -7,19 +7,19 @@ import {BrowserRouter} from "react-router-dom";
 
 it(`Should FilmCardsList render correctly`, () => {
   const tree = renderer.create(
-    <BrowserRouter>
-      <FilmCardsList
-        films={films}
-        activeFilmCard={1}
-        onFilmCardClick={noop}
-        handleHoverFilmCard={noop}
-      />
-    </BrowserRouter>,
-    {
-      createNodeMock: () => {
-        return {};
+      <BrowserRouter>
+        <FilmCardsList
+          films={films}
+          activeFilmCard={1}
+          onFilmCardClick={noop}
+          handleHoverFilmCard={noop}
+        />
+      </BrowserRouter>,
+      {
+        createNodeMock: () => {
+          return {};
+        }
       }
-    }
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

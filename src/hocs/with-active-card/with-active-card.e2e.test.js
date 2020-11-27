@@ -12,5 +12,5 @@ it(`Should active card`, () => {
   const wrapper = shallow(
       <MockComponentWrapped />);
 
-  expect(wrapper.state().activeFilmCard).toEqual("");
+  expect(wrapper.state().activeFilmCard).toEqual(``);
 });

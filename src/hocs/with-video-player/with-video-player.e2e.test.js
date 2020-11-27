@@ -27,18 +27,10 @@ const MockComponentWrapped = withVideoPlayer(MockComponent);
 describe(`withVideoPlayer should pass`, () => {
   it(`withVideoPlayer isPlaying false`, () => {
     const wrapper = mount(
-        <MockComponentWrapped />);
+        <MockComponentWrapped />
+    );
 
     expect(wrapper.state().isPlaying).toEqual(false);
     expect(wrapper.state().isLoading).toEqual(true);
   });
-
-  // it(`withVideoPlayer isLoading true`, () => {
-  //   const wrapper = mount(
-  //       <MockComponentWrapped>
-  //         <React.Fragment />
-  //       </MockComponentWrapped>);
-
-  //   expect(wrapper.state().isLoading).toEqual(true);
-  // });
 });

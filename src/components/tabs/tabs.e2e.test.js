@@ -12,11 +12,11 @@ it(`Tabs callback should be called on tab click`, () => {
   const formSendPrevention = jest.fn();
 
   const wrapper = shallow(
-    <Tabs
-      film={films[0]}
-      activeTab={FilmTabs.OVERVIEW}
-      handleActiveTab={onTabClick}
-    />
+      <Tabs
+        film={films[0]}
+        activeTab={FilmTabs.OVERVIEW}
+        handleActiveTab={onTabClick}
+      />
   );
 
   const tab1 = wrapper.find(`.movie-nav__link`).at(0);

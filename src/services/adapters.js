@@ -29,26 +29,26 @@ const adaptFilmToClient = (film) => {
 
 const adaptFilmToServer = (film) => {
   const adaptedFilm = Object.assign(
-    {},
-    {
-      background_color: film.bgColor,
-      background_image: film.bgImage,
-      description: film.description,
-      director: film.director,
-      genre: film.genre,
-      id: film.id,
-      is_favorite: film.isFavorite,
-      name: film.title,
-      poster_image: film.image,
-      preview_image: film.previewImage,
-      preview_video_link: film.previewVideo,
-      rating: film.rating.score,
-      released: film.year,
-      run_time: film.duration,
-      scores_count: film.rating.count,
-      starring: film.actors,
-      video_link: film.video
-    }
+      {},
+      {
+        'background_color': film.bgColor,
+        'background_image': film.bgImage,
+        'description': film.description,
+        'director': film.director,
+        'genre': film.genre,
+        'id': film.id,
+        'is_favorite': film.isFavorite,
+        'name': film.title,
+        'poster_image': film.image,
+        'preview_image': film.previewImage,
+        'preview_video_link': film.previewVideo,
+        'rating': film.rating.score,
+        'released': film.year,
+        'run_time': film.duration,
+        'scores_count': film.rating.count,
+        'starring': film.actors,
+        'video_link': film.video
+      }
   );
   return adaptedFilm;
 };

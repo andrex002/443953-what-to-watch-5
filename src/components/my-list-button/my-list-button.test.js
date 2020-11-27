@@ -8,14 +8,14 @@ import {AuthorizationStatus} from "../../const";
 describe(`Should MyListButton render correctly`, () => {
   it(`If film is favorite`, () => {
     const tree = renderer.create(
-      <BrowserRouter>
-        <MyListButton
-          id={1}
-          isFavorite={true}
-          onMyListClick={noop}
-          authorizationStatus={AuthorizationStatus.AUTH}
-        />
-      </BrowserRouter>
+        <BrowserRouter>
+          <MyListButton
+            id={1}
+            isFavorite={true}
+            onMyListClick={noop}
+            authorizationStatus={AuthorizationStatus.AUTH}
+          />
+        </BrowserRouter>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -23,14 +23,14 @@ describe(`Should MyListButton render correctly`, () => {
 
   it(`If film is not favorite`, () => {
     const tree = renderer.create(
-      <BrowserRouter>
-        <MyListButton
-          id={1}
-          isFavorite={false}
-          onMyListClick={noop}
-          authorizationStatus={AuthorizationStatus.AUTH}
-        />
-      </BrowserRouter>
+        <BrowserRouter>
+          <MyListButton
+            id={1}
+            isFavorite={false}
+            onMyListClick={noop}
+            authorizationStatus={AuthorizationStatus.AUTH}
+          />
+        </BrowserRouter>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

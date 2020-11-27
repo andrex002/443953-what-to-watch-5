@@ -7,13 +7,13 @@ const {director, actors, description, rating} = films[0];
 
 it(`Should FilmPageOverview render correctly`, () => {
   const tree = renderer.create(
-    <FilmPageOverview
-      rating={rating}
-      description={description}
-      director={director}
-      actors={actors}
-    />)
-  .toJSON();
+      <FilmPageOverview
+        rating={rating}
+        description={description}
+        director={director}
+        actors={actors}
+      />
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

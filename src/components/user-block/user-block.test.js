@@ -7,12 +7,12 @@ import {AuthorizationStatus} from "../../const";
 describe(`Should UserBlock render correctly`, () => {
   it(`When user authorised`, () => {
     const tree = renderer.create(
-      <BrowserRouter>
-        <UserBlock
-          authorizationStatus={AuthorizationStatus.AUTH} />
-          userName={`Alex`}
-          userAvatar={`img/avatar.jpg`}
-      </BrowserRouter>
+        <BrowserRouter>
+          <UserBlock
+            authorizationStatus={AuthorizationStatus.AUTH} />
+            userName={`Alex`}
+            userAvatar={`img/avatar.jpg`}
+        </BrowserRouter>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -20,12 +20,13 @@ describe(`Should UserBlock render correctly`, () => {
 
   it(`When user not authorised`, () => {
     const tree = renderer.create(
-      <BrowserRouter>
-        <UserBlock
-          authorizationStatus={AuthorizationStatus.NO_AUTH} />
-          userName={`Alex`}
-          userAvatar={`img/avatar.jpg`}
-      </BrowserRouter>
+        <BrowserRouter>
+          <UserBlock
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
+            userName={`Alex`}
+            userAvatar={`img/avatar.jpg`}
+          />
+        </BrowserRouter>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

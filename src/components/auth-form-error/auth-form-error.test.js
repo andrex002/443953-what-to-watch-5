@@ -4,10 +4,10 @@ import AuthFormError from "./auth-form-error";
 
 it(`Should AuthFormError render correctly`, () => {
   const tree = renderer.create(
-    <AuthFormError
-      isValidEmail={true}
-      isValidPassword={true}
-    />
+      <AuthFormError
+        isValidEmail={true}
+        isValidPassword={true}
+      />
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

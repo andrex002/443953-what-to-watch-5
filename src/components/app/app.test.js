@@ -9,9 +9,9 @@ const mockStore = configureMockStore()(defaultState);
 
 it(`Should App render correctly`, () => {
   const tree = renderer.create(
-    <Provider store={mockStore}>
-      <App />
-    </Provider>
+      <Provider store={mockStore}>
+        <App />
+      </Provider>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();
