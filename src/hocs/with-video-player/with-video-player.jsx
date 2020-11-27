@@ -53,7 +53,15 @@ const withVideoPlayer = (Component) => {
     }
 
     render() {
-      return <Component forwardedRef={this._videoRef} {...this.props} />;
+      return (
+        <Component {...this.props}
+          renderPlayer={(video, image) => {
+            return (
+              <video ref={this._videoRef} src={video} width="280" height="175" muted poster={image}></video>
+            );
+          }}
+        />
+      );
     }
   }
   return WithVideoPlayer;

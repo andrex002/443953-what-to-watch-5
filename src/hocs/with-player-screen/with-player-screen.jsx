@@ -62,12 +62,16 @@ const withPlayerScreen = (Component) => {
 
       return (
         <Component {...this.props}
-          forwardedRef={this._videoRef}
           isPlaying={isPlaying}
           duration={duration}
           progress={progress}
           onPlayBtnClick = {this._handlePlayBtnClick}
           onFullscreenClick={this._handleFullscreenBtnClick}
+          renderPlayer={(film) => {
+            return (
+              <video ref={this._videoRef} src={film.video} className="player__video" poster={film.image}></video>
+            );
+          }}
         />
       );
     }

@@ -5,7 +5,8 @@ import {formatDurationFilmInSeconds} from "../../utils";
 import {connect} from "react-redux";
 
 const PlayerScreen = (props) => {
-  const {forwardedRef, duration, progress, onPlayBtnClick, onFullscreenClick, films, promoFilm, currentFilmId, isPlaying} = props;
+  const {duration, progress, onPlayBtnClick, onFullscreenClick, renderPlayer, films, promoFilm, currentFilmId, isPlaying} = props;
+
   const getCurrentFilm = () => {
     if (currentFilmId === promoFilm.id) {
       return promoFilm;
@@ -21,7 +22,7 @@ const PlayerScreen = (props) => {
 
   return (
     <div className="player">
-      <video ref={forwardedRef} src={currentFilm.video} className="player__video" poster={currentFilm.image}></video>
+      {renderPlayer(currentFilm)}
 
       <button type="button" className="player__exit" onClick={() => history.goBack()}>Exit</button>
 
@@ -67,7 +68,7 @@ const PlayerScreen = (props) => {
 };
 
 PlayerScreen.propTypes = {
-  forwardedRef: PropTypes.object.isRequired,
+  renderPlayer: PropTypes.func.isRequired,
   duration: PropTypes.number.isRequired,
   progress: PropTypes.number.isRequired,
   onPlayBtnClick: PropTypes.func.isRequired,

@@ -1,6 +1,6 @@
-import {loadFilms, loadPromo, loadFavorites, loadComments, requireAuthorization, redirectToRoute, saveAuthorizationInfo, loadFilmById, setCommentSending, setCommentSendError} from "./action";
+import {loadFilms, loadPromo, loadFavorites, loadComments, requireAuthorization, redirectToRoute, saveAuthorizationInfo, loadFilmById, setCommentSending, setCommentSendError, setIsFilmByIdLoading} from "./action";
 import {adaptFilmToClient, adaptCommentToClient} from "../services/adapters";
-import {AuthorizationStatus} from "../const";
+import {AuthorizationStatus, StatusIsFavorite} from "../const";
 
 const fetchFilmsList = () => (dispatch, _getState, api) => (
   api.get(`/films`)
@@ -52,7 +52,13 @@ const login = ({email, password}) => (dispatch, _getState, api) => (
 
 const fetchFilmById = (filmId) => (dispatch, _getState, api) => (
   api.get(`/films/${filmId}`)
-    .then(({data}) => dispatch(loadFilmById(adaptFilmToClient(data))))
+    .then(({data}) => {
+      dispatch(loadFilmById(adaptFilmToClient(data)));
+      dispatch(setIsFilmByIdLoading(false));
+    })
+    .catch(() => {
+      dispatch(setIsFilmByIdLoading(true));
+    })
 );
 
 const sendComment = (filmId, {rating, comment}) => (dispatch, _getState, api) => (
@@ -68,4 +74,12 @@ const sendComment = (filmId, {rating, comment}) => (dispatch, _getState, api) =>
     })
 );
 
-export {fetchFilmsList, fetchPromoFilm, fetchFavoriteFilms, fetchComments, checkAuth, login, fetchFilmById, sendComment};
+const sendFavoriteStatus = (filmId, isFavorite) => (dispatch, _getState, api) => (
+  api.post(`/favorite/${filmId}/${isFavorite ? StatusIsFavorite.REMOVE : StatusIsFavorite.ADD}`)
+    .then(() => {
+      dispatch(fetchPromoFilm());
+      dispatch(fetchFilmById(filmId));
+    })
+);
+
+export {fetchFilmsList, fetchPromoFilm, fetchFavoriteFilms, fetchComments, checkAuth, login, fetchFilmById, sendComment, sendFavoriteStatus};

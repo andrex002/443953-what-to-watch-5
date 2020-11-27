@@ -6,6 +6,7 @@ import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
+import MyListButton from "../my-list-button/my-list-button";
 import {connect} from "react-redux";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import {getFilmsByGenre} from "../../store/selectors/selectors";
@@ -14,7 +15,7 @@ const FilmCardsListWrapped = withActiveCard(FilmCardsList);
 
 const MainScreen = (props) => {
   const {promoFilm, filteredFilms, onFilmCardClick, numberFilmsShown} = props;
-  const {title, genre, year, image, bgImage, id} = promoFilm;
+  const {title, genre, year, image, bgImage, id, isFavorite} = promoFilm;
 
   const renderedFilms = filteredFilms.slice(0, numberFilmsShown);
 
@@ -59,12 +60,7 @@ const MainScreen = (props) => {
                   </svg>
                   <span>Play</span>
                 </Link>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
+                <MyListButton id={id} isFavorite={isFavorite} />
               </div>
             </div>
           </div>
@@ -95,7 +91,8 @@ MainScreen.propTypes = {
     year: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
     bgImage: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool.isRequired
   }),
   filteredFilms: PropTypes.array.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,

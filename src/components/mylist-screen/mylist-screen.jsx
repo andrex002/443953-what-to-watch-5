@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import FilmCardsList from "../film-cards-list/film-cards-list";
 import LogoHeader from "../logo-header/logo-header";
@@ -6,11 +6,16 @@ import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import {connect} from "react-redux";
+import {fetchFavoriteFilms} from "../../store/api-action";
 
 const FilmCardsListWrapped = withActiveCard(FilmCardsList);
 
 const MyListScreen = (props) => {
-  const {films, onFilmCardClick} = props;
+  const {favoriteFilms, onFilmCardClick, getFavoriteFilms} = props;
+
+  useEffect(() => {
+    getFavoriteFilms();
+  }, []);
 
   return (
     <div className="user-page">
@@ -27,7 +32,7 @@ const MyListScreen = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilmCardsListWrapped films={films} onFilmCardClick={onFilmCardClick} />
+        <FilmCardsListWrapped films={favoriteFilms} onFilmCardClick={onFilmCardClick} />
 
       </section>
 
@@ -38,13 +43,20 @@ const MyListScreen = (props) => {
 };
 
 MyListScreen.propTypes = {
-  films: PropTypes.array.isRequired,
-  onFilmCardClick: PropTypes.func.isRequired
+  favoriteFilms: PropTypes.array.isRequired,
+  onFilmCardClick: PropTypes.func.isRequired,
+  getFavoriteFilms: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({DATA}) => ({
-  films: DATA.allFilms
+  favoriteFilms: DATA.favoriteFilms
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getFavoriteFilms() {
+    dispatch(fetchFavoriteFilms());
+  }
 });
 
 export {MyListScreen};
-export default connect(mapStateToProps)(MyListScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(MyListScreen);
