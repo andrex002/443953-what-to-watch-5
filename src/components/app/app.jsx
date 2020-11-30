@@ -9,6 +9,9 @@ import MyListScreen from "../mylist-screen/mylist-screen";
 import PlayerScreen from "../player-screen/player-screen";
 import withPlayerScreen from "../../hocs/with-player-screen/with-player-screen";
 import AddReviewScreen from "../add-review-screen/add-review-screen";
+import withAuthScreen from "../../hocs/with-auth-screen/with-auth-screen";
+
+const AuthScreenWrapped = withAuthScreen(AuthScreen);
 
 const PlayerScreenWrapped = withPlayerScreen(PlayerScreen);
 
@@ -26,7 +29,7 @@ const App = () => {
         >
         </Route>
         <Route exact path="/login">
-          <AuthScreen />
+          <AuthScreenWrapped />
         </Route>
         <PrivateRoute exact path="/mylist"
           render={({history}) => (

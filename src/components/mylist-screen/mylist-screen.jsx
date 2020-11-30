@@ -43,7 +43,7 @@ const MyListScreen = (props) => {
 };
 
 MyListScreen.propTypes = {
-  favoriteFilms: PropTypes.array.isRequired,
+  favoriteFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   getFavoriteFilms: PropTypes.func.isRequired
 };

@@ -21,4 +21,11 @@ const StatusIsFavorite = {
   REMOVE: 0
 };
 
-export {FilmTabs, filmsCount, VIDEO_PLAY_TIMEOUT, AuthorizationStatus, StatusIsFavorite};
+const FilmGenres = {
+  ALL_GENRES: `All genres`,
+  COMEDY: `Comedy`,
+  DRAMA: `Drama`,
+  THRILLER: `Thriller`
+};
+
+export {FilmTabs, filmsCount, VIDEO_PLAY_TIMEOUT, AuthorizationStatus, StatusIsFavorite, FilmGenres};

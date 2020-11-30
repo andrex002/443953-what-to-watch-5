@@ -15,7 +15,7 @@ it(`Tabs callback should be called on tab click`, () => {
       <Tabs
         film={films[0]}
         activeTab={FilmTabs.OVERVIEW}
-        handleActiveTab={onTabClick}
+        onActiveTab={onTabClick}
       />
   );
 

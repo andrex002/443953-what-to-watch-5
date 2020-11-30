@@ -51,9 +51,9 @@ const withUserReview = (Component) => {
         <Component {...this.props}
           isValidComment={isValidComment && !!currentRating}
           currentRating={currentRating}
-          handleRatingChange={this._handleRatingChange}
-          handleCommentChange={this._handleCommentChange}
-          handlePostBtnClick={this._handlePostBtnClick}
+          onRatingChange={this._handleRatingChange}
+          onCommentChange={this._handleCommentChange}
+          onPostBtnClick={this._handlePostBtnClick}
         />
       );
     }

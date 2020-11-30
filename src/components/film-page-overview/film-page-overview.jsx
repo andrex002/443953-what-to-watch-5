@@ -35,7 +35,7 @@ FilmPageOverview.propTypes = {
   }),
   description: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
-  actors: PropTypes.array.isRequired
+  actors: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default FilmPageOverview;

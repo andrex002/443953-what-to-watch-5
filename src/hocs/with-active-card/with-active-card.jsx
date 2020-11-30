@@ -9,10 +9,10 @@ const withActiveCard = (Component) => {
         activeFilmCard: ``
       };
 
-      this._handleHoverFilmCard = this._handleHoverFilmCard.bind(this);
+      this._handleFilmCardHover = this._handleFilmCardHover.bind(this);
     }
 
-    _handleHoverFilmCard(filmId) {
+    _handleFilmCardHover(filmId) {
       this.setState({
         activeFilmCard: filmId
       });
@@ -24,7 +24,7 @@ const withActiveCard = (Component) => {
       return (
         <Component {...this.props}
           activeFilmCard={activeFilmCard}
-          handleHoverFilmCard={this._handleHoverFilmCard}
+          onFilmCardHover={this._handleFilmCardHover}
         />
       );
     }

@@ -7,7 +7,7 @@ import FilmPageReviews from "../film-page-reviews/film-page-reviews";
 import {FilmTabs} from "../../const";
 
 const Tabs = (props) => {
-  const {film, activeTab, handleActiveTab} = props;
+  const {film, activeTab, onActiveTab} = props;
   const {genre, year, rating, description, director, actors, duration, id} = film;
 
   const getFilmPageContent = () => {
@@ -51,7 +51,7 @@ const Tabs = (props) => {
                 <a
                   onClick={(evt) => {
                     evt.preventDefault();
-                    handleActiveTab(value);
+                    onActiveTab(value);
                   }}
                   href="#"
                   className="movie-nav__link">{value}
@@ -77,14 +77,14 @@ Tabs.propTypes = {
     }),
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    actors: PropTypes.array.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string).isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
     duration: PropTypes.number.isRequired,
   }),
   activeTab: PropTypes.string.isRequired,
-  handleActiveTab: PropTypes.func.isRequired
+  onActiveTab: PropTypes.func.isRequired
 };
 
 export default Tabs;

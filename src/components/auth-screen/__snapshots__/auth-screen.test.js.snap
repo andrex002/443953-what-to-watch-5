@@ -57,13 +57,6 @@ exports[`Should AuthScreen render correctly 1`] = `
         <div
           className="sign-in__field"
         >
-          <input
-            className="sign-in__input"
-            id="user-email"
-            name="user-email"
-            placeholder="Email address"
-            type="email"
-          />
           <label
             className="sign-in__label visually-hidden"
             htmlFor="user-email"
@@ -74,13 +67,6 @@ exports[`Should AuthScreen render correctly 1`] = `
         <div
           className="sign-in__field"
         >
-          <input
-            className="sign-in__input"
-            id="user-password"
-            name="user-password"
-            placeholder="Password"
-            type="password"
-          />
           <label
             className="sign-in__label visually-hidden"
             htmlFor="user-password"

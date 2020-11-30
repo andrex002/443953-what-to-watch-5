@@ -1,7 +1,8 @@
 import {ActionType} from "../../action";
+import {FilmGenres} from "../../../const";
 
 const initialState = {
-  activeGenre: `All genres`,
+  activeGenre: FilmGenres.ALL_GENRES,
 };
 
 const filmsFilter = (state = initialState, action) => {

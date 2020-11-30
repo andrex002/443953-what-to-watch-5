@@ -1,8 +1,10 @@
 import React from "react";
 import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import {AuthScreen} from "./auth-screen";
+import AuthScreen from "./auth-screen";
+import {noop} from "../../test-data";
 import {BrowserRouter} from "react-router-dom";
+import {AuthorizationStatus} from "../../const";
 
 configure({adapter: new Adapter()});
 
@@ -13,14 +15,16 @@ it(`AuthScreen submit`, () => {
   const wrapper = mount(
       <BrowserRouter>
         <AuthScreen
-          onSubmit={onSignInSubmit}
-          authorizationStatus={`NO_AUTH`}
+          authorizationStatus={AuthorizationStatus.NO_AUTH}
+          isValidEmail={true}
+          isValidPassword={true}
+          renderEmailInput={noop}
+          renderPasswordInput={noop}
+          onFormSubmit={onSignInSubmit}
         />
       </BrowserRouter>
   );
 
-  wrapper.find(`input[name="user-email"]`).instance().value = `test@test.com`;
-  wrapper.find(`input[name="user-password"]`).instance().value = `123`;
   const form = wrapper.find(`.sign-in__form`);
   form.simulate(`submit`, {preventDefault: formSendPrevention});
   expect(onSignInSubmit).toHaveBeenCalledTimes(1);

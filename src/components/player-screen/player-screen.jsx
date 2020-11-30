@@ -73,7 +73,7 @@ PlayerScreen.propTypes = {
   progress: PropTypes.number.isRequired,
   onPlayBtnClick: PropTypes.func.isRequired,
   onFullscreenClick: PropTypes.func.isRequired,
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
   promoFilm: PropTypes.object.isRequired,
   currentFilmId: PropTypes.number.isRequired,
   isPlaying: PropTypes.bool.isRequired

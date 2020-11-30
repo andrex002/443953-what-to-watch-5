@@ -16,7 +16,7 @@ describe(`Should FilmCard render correctly`, () => {
             id={1}
             srcVideo={srcVideo}
             isActive={true}
-            handleHoverFilmCard={noop}
+            onFilmCardHover={noop}
             onFilmCardClick={noop}
           />
         </BrowserRouter>,
@@ -39,7 +39,7 @@ describe(`Should FilmCard render correctly`, () => {
             id={1}
             srcVideo={srcVideo}
             isActive={false}
-            handleHoverFilmCard={noop}
+            onFilmCardHover={noop}
             onFilmCardClick={noop}
           />
         </BrowserRouter>

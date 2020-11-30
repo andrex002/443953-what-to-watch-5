@@ -12,7 +12,7 @@ it(`Should FilmCardsList render correctly`, () => {
           films={films}
           activeFilmCard={1}
           onFilmCardClick={noop}
-          handleHoverFilmCard={noop}
+          onFilmCardHover={noop}
         />
       </BrowserRouter>,
       {

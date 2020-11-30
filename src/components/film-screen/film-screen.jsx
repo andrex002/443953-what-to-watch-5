@@ -105,18 +105,18 @@ const FilmScreen = (props) => {
 FilmScreen.propTypes = {
   currentFilmId: PropTypes.number.isRequired,
   currentFilm: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    bgImage: PropTypes.string.isRequired,
-    bgColor: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired
+    title: PropTypes.string,
+    genre: PropTypes.string,
+    year: PropTypes.number,
+    image: PropTypes.string,
+    bgImage: PropTypes.string,
+    bgColor: PropTypes.string,
+    id: PropTypes.number,
+    isFavorite: PropTypes.bool
   }),
   onFilmCardClick: PropTypes.func.isRequired,
   loadFilm: PropTypes.func.isRequired,
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   isFilmByIdLoading: PropTypes.bool.isRequired
 };

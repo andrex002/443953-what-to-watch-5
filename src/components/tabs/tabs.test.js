@@ -14,7 +14,7 @@ describe(`Should Tabs render correctly`, () => {
         <Tabs
           film={films[0]}
           activeTab={FilmTabs.OVERVIEW}
-          handleActiveTab={noop}
+          onActiveTab={noop}
         />
     ).toJSON();
 
@@ -26,7 +26,7 @@ describe(`Should Tabs render correctly`, () => {
         <Tabs
           film={films[0]}
           activeTab={FilmTabs.DETAILS}
-          handleActiveTab={noop}
+          onActiveTab={noop}
         />
     ).toJSON();
 
@@ -38,7 +38,7 @@ describe(`Should Tabs render correctly`, () => {
         <Tabs
           film={films[0]}
           activeTab={FilmTabs.REVIEWS}
-          handleActiveTab={noop}
+          onActiveTab={noop}
         />
     ).toJSON();
 

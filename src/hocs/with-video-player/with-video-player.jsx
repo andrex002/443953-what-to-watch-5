@@ -15,16 +15,6 @@ const withVideoPlayer = (Component) => {
       this._play = this._play.bind(this);
     }
 
-    _play() {
-      this._playTimeOut = setTimeout(() => {
-        if (!this.state.isLoading) {
-          this.setState({
-            isPlaying: true
-          });
-        }
-      }, VIDEO_PLAY_TIMEOUT);
-    }
-
     componentDidMount() {
       const video = this._videoRef.current;
       video.oncanplay = () => this.setState({
@@ -50,6 +40,16 @@ const withVideoPlayer = (Component) => {
       video.oncanplay = null;
 
       clearTimeout(this._playTimeOut);
+    }
+
+    _play() {
+      this._playTimeOut = setTimeout(() => {
+        if (!this.state.isLoading) {
+          this.setState({
+            isPlaying: true
+          });
+        }
+      }, VIDEO_PLAY_TIMEOUT);
     }
 
     render() {

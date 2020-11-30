@@ -16,7 +16,7 @@ describe(`FilmCard callback should be called`, () => {
         <FilmCard
           image={image}
           title={title}
-          handleHoverFilmCard={noop}
+          onFilmCardHover={noop}
           id={1}
           onFilmCardClick={onFilmCardClick}
           srcVideo={srcVideo}
@@ -36,7 +36,7 @@ describe(`FilmCard callback should be called`, () => {
         <FilmCard
           image={image}
           title={title}
-          handleHoverFilmCard={onMouseEnter}
+          onFilmCardHover={onMouseEnter}
           id={1}
           onFilmCardClick={noop}
           srcVideo={srcVideo}
@@ -56,7 +56,7 @@ describe(`FilmCard callback should be called`, () => {
         <FilmCard
           image={image}
           title={title}
-          handleHoverFilmCard={onMouseLeave}
+          onFilmCardHover={onMouseLeave}
           id={1}
           onFilmCardClick={noop}
           srcVideo={srcVideo}

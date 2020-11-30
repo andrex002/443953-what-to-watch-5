@@ -1,3 +1,5 @@
+import {FilmGenres} from "./const";
+
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
@@ -57,11 +59,11 @@ const getRatingLevel = (score) => {
 };
 
 const getGenreName = (genre) => {
-  if (genre === `Comedy`) {
+  if (genre === FilmGenres.COMEDY) {
     return `Comedies`;
-  } else if (genre === `Drama`) {
+  } else if (genre === FilmGenres.DRAMA) {
     return `Dramas`;
-  } else if (genre === `Thriller`) {
+  } else if (genre === FilmGenres.THRILLER) {
     return `Thrillers`;
   }
   return genre;

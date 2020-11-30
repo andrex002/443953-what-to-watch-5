@@ -94,7 +94,7 @@ MainScreen.propTypes = {
     id: PropTypes.number.isRequired,
     isFavorite: PropTypes.bool.isRequired
   }),
-  filteredFilms: PropTypes.array.isRequired,
+  filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   numberFilmsShown: PropTypes.number.isRequired
 };

@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {changeFilter, clearShownFilms} from "../../store/action";
 import {getGenreName} from "../../utils";
+import {FilmGenres} from "../../const";
 
 const GenresList = (props) => {
   const {films, activeGenre, onGenreClick} = props;
-  const listAllGenres = [`All genres`, ...new Set(films.map((film) => film.genre))];
+  const allGenreList = [FilmGenres.ALL_GENRES, ...new Set(films.map((film) => film.genre))];
 
   const getGenreItemClass = (genre) => {
     return activeGenre === genre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`;
@@ -15,7 +16,7 @@ const GenresList = (props) => {
   return (
     <ul className="catalog__genres-list">
       {
-        listAllGenres.map((genre, i) => {
+        allGenreList.map((genre, i) => {
           return (
             <li key={`genre - ${i}`} className={getGenreItemClass(genre)}>
               <a
@@ -35,7 +36,7 @@ const GenresList = (props) => {
 };
 
 GenresList.propTypes = {
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
   activeGenre: PropTypes.string.isRequired,
   onGenreClick: PropTypes.func.isRequired
 };

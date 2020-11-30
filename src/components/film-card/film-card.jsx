@@ -7,7 +7,7 @@ import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
 const VideoPlayerWrapped = withVideoPlayer(VideoPlayer);
 
 const FilmCard = (props) => {
-  const {title, image, id, handleHoverFilmCard, onFilmCardClick, srcVideo, isActive} = props;
+  const {title, image, id, onFilmCardHover, onFilmCardClick, srcVideo, isActive} = props;
 
   const moviePreview = isActive ?
     <VideoPlayerWrapped srcVideo={srcVideo} poster={image} /> :
@@ -19,8 +19,8 @@ const FilmCard = (props) => {
     <article
       className="small-movie-card catalog__movies-card"
       data-id={id}
-      onMouseEnter={() => handleHoverFilmCard(id)}
-      onMouseLeave={() => handleHoverFilmCard(``)}
+      onMouseEnter={() => onFilmCardHover(id)}
+      onMouseLeave={() => onFilmCardHover(``)}
       onClick={() => onFilmCardClick(id)}
     >
       {moviePreview}
@@ -35,7 +35,7 @@ const FilmCard = (props) => {
 FilmCard.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  handleHoverFilmCard: PropTypes.func.isRequired,
+  onFilmCardHover: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   srcVideo: PropTypes.string.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,

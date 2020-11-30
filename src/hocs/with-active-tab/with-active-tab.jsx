@@ -25,7 +25,7 @@ const withActiveTab = (Component) => {
       return (
         <Component {...this.props}
           activeTab={activeTab}
-          handleActiveTab={this._handleActiveTab}
+          onActiveTab={this._handleActiveTab}
         />
       );
     }

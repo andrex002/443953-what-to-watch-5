@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const STAR_NUMBER = [`1`, `2`, `3`, `4`, `5`];
 
 const AddReviewForm = (props) => {
-  const {currentRating, handleRatingChange, handleCommentChange, handlePostBtnClick, isValidComment, isCommentSending, isCommentSendError} = props;
+  const {currentRating, onRatingChange, onCommentChange, onPostBtnClick, isValidComment, isCommentSending, isCommentSendError} = props;
   const getMessage = () => {
     if (isCommentSending) {
       return <p>Sending your review...</p>;
@@ -29,7 +29,7 @@ const AddReviewForm = (props) => {
                 <input className="rating__input" id={`star-${starNumber}`} type="radio" name="rating" value={starNumber}
                   disabled={isCommentSending}
                   checked={currentRating === starNumber}
-                  onChange={handleRatingChange}
+                  onChange={onRatingChange}
                 />
                 <label className="rating__label" htmlFor={`star-${starNumber}`}>Rating {starNumber}</label>
               </React.Fragment>
@@ -45,7 +45,7 @@ const AddReviewForm = (props) => {
           name="review-text"
           id="review-text"
           placeholder="Review text"
-          onChange={handleCommentChange}
+          onChange={onCommentChange}
           disabled={isCommentSending}
           minLength="50"
           maxLength="400"
@@ -54,7 +54,7 @@ const AddReviewForm = (props) => {
         <div className="add-review__submit">
           <button className="add-review__btn" type="submit"
             disabled={!isValidComment}
-            onClick={handlePostBtnClick}>Post</button>
+            onClick={onPostBtnClick}>Post</button>
         </div>
       </div>
       {getMessage()}
@@ -64,9 +64,9 @@ const AddReviewForm = (props) => {
 
 AddReviewForm.propTypes = {
   currentRating: PropTypes.string.isRequired,
-  handleRatingChange: PropTypes.func.isRequired,
-  handleCommentChange: PropTypes.func.isRequired,
-  handlePostBtnClick: PropTypes.func.isRequired,
+  onRatingChange: PropTypes.func.isRequired,
+  onCommentChange: PropTypes.func.isRequired,
+  onPostBtnClick: PropTypes.func.isRequired,
   isValidComment: PropTypes.bool.isRequired,
   isCommentSending: PropTypes.bool.isRequired,
   isCommentSendError: PropTypes.bool.isRequired
